@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\PageDetailController;
 use App\Http\Controllers\PermissionController;
 
 /*
@@ -31,4 +31,4 @@ Route::resource('user',            UserController::class);
 Route::resource('role',            RoleController::class);
 Route::resource('module',          ModuleController::class);
 Route::resource('permission',      PermissionController::class);
-Route::resource('homepage',      HomePageController::class);
+Route::resource('pagedetail',      PageDetailController::class);

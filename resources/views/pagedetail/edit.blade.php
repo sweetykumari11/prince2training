@@ -6,12 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1>Homepage</h1>
+                        <h1>pagedetail</h1>
                     </div>
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('homepage.index') }}">Homepage</a></li>
-                            <li class="breadcrumb-item active">Edit Homepage</li>
+                            <li class="breadcrumb-item"><a href="{{ route('pagedetail.index') }}">pagedetail</a></li>
+                            <li class="breadcrumb-item active">Edit pagedetail</li>
                         </ol>
                     </div>
                 </div>
@@ -25,18 +25,18 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Homepage</h3>
+                                <h3 class="card-title">Edit pagedetail</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form method="POST" action="{{ route('homepage.update', $homepage->id) }}">
+                                <form method="POST" action="{{ route('pagedetail.update', $pagedetail->id) }}">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
                                         <label>Page Name<span class="text-danger">*</label>
                                         <input id="pagenames" type="text"
                                             class="form-control @error('pagename') is-invalid @enderror" name="pagename"
-                                            value="{{ $homepage->pagename }}">
+                                            value="{{ $pagedetail->pagename }}">
 
                                         @error('pagename')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -46,7 +46,7 @@
                                         <label>Section<span class="text-danger">*</label>
                                         <input id="sections" type="text"
                                             class="form-control @error('section') is-invalid @enderror" name="section"
-                                            value="{{ $homepage->section }}">
+                                            value="{{ $pagedetail->section }}">
 
                                         @error('section')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -56,7 +56,7 @@
                                         <label>Sub section<span class="text-danger">*</label>
                                         <input id="subsections" type="text"
                                             class="form-control @error('subsection') is-invalid @enderror" name="subsection"
-                                            value="{{ $homepage->subsection }}">
+                                            value="{{ $pagedetail->subsection }}">
                                         @error('subsection')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -69,9 +69,9 @@
                                                     class="form-control @error('logo') is-invalid @enderror" id="home_image"
                                                     name="logo">
                                             </div>
-                                            @if (!empty($homepage->images))
+                                            @if (!empty($pagedetail->images))
                                                 <div class="col-md-3">
-                                                    <img src="{{ asset($homepage->images) }}" alt="Current Logo"
+                                                    <img src="{{ asset($pagedetail->images) }}" alt="Current Logo"
                                                         class="img-thumbnail" height="50" width="50" id="cLogo">
                                                     <i class="fas fa-trash text-danger" id="removelogo"
                                                         onClick="removeLogo()"></i>
@@ -105,14 +105,14 @@
     <script>
         function removeLogo() {
             $('#removelogotxt').val('removed');
-            $('#cLogo').attr('src', '{{ asset('Images/homepage/no-image.png') }}');
+            $('#cLogo').attr('src', '{{ asset('Images/pagedetail/no-image.png') }}');
             $('#removelogo').hide();
             $('#undoremovelogo').show();
         }
 
         function undoLogo() {
             $('#removelogotxt').val(null);
-            $('#cLogo').attr('src', '{{ asset($homepage->images) }}');
+            $('#cLogo').attr('src', '{{ asset($pagedetail->images) }}');
             $('#removelogo').show();
             $('#undoremovelogo').hide();
         }

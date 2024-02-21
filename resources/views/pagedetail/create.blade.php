@@ -11,8 +11,8 @@
                     </div>
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('homepage.index') }}">Homepage</a></li>
-                            <li class="breadcrumb-item active">Create Homepage</li>
+                            <li class="breadcrumb-item"><a href="{{ route('pagedetail.index') }}">pagedetail</a></li>
+                            <li class="breadcrumb-item active">Create pagedetail</li>
                         </ol>
                     </div>
                 </div>
@@ -25,11 +25,11 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Create Homepage</h3>
+                                <h3 class="card-title">Create pagedetail</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form method="POST" action="{{ route('homepage.store') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('pagedetail.store') }}" enctype="multipart/form-data">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <div class="form-group">
                                         <label>Page Name<span class="text-danger">*</label>

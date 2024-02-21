@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Homepage;
 use Yajra\DataTables\Facades\Datatables;
-use App\Http\Requests\StoreHomepageRequest;
-use App\Http\Requests\UpdateHomepageRequest;
+use App\Http\Requests\StorePagedetailRequest;
+use App\Http\Requests\UpdatePagedetailRequest;
 use Illuminate\Support\Facades\Auth;
 
-class HomePageController extends Controller
+class PageDetailController extends Controller
 {
     public function index(Request $request)
     {
@@ -17,13 +17,13 @@ class HomePageController extends Controller
             $query = Homepage::query();
             return Datatables::eloquent($query)->make(true);
         }
-        return view('homepage.list');
+        return view('pagedetail.list');
     }
     public function create()
     {
-        return view('homepage.create');
+        return view('pagedetail.create');
     }
-    public function store(StoreHomepageRequest $request)
+    public function store(StorePagedetailRequest $request)
     {
 
         if ($request->file('image')) {
@@ -48,10 +48,9 @@ class HomePageController extends Controller
     }
     public function edit(Homepage $homepage)
     {
-        // print_r($homepage);
-        return view('homepage.edit', compact('homepage'));
+        return view('pagedetail.edit', compact('homepage'));
     }
-    public function update(UpdateHomepageRequest $request, Homepage $homepage)
+    public function update(UpdatePagedetailRequest $request, Homepage $homepage)
     {
 
 
@@ -67,6 +66,6 @@ class HomePageController extends Controller
 
         $homepage->delete();
         session()->flash('danger', 'Homepage Deleted successfully.');
-        return redirect()->route('homepage.index');
+        return redirect()->route('pagedetail.index');
     }
 }

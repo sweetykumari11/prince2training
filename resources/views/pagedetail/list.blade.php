@@ -23,7 +23,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Home Page</h3>
                                 <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
-                                        href="{{ route('homepage.create') }}"> Create
+                                        href="{{ route('pagedetail.create') }}"> Create
                                         New Record</a>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                             $('#table').DataTable({
                                                 processing: true,
                                                 serverSide: true,
-                                                ajax: '{{ route('homepage.index') }}',
+                                                ajax: '{{ route('pagedetail.index') }}',
 
                                                 columns: [{
                                                         data: 'pagename',
@@ -66,10 +66,10 @@
                                                         orderable: false,
                                                         searchable: false,
                                                         render: function(data, type, full, meta) {
-                                                            var editUrl = '{{ route('homepage.edit', ':id') }}'.replace(':id',
+                                                            var editUrl = '{{ route('pagedetail.edit', ':id') }}'.replace(':id',
                                                                 data);
                                                             var deleteFormId = 'delete-form-' + data;
-                                                            var deleteUrl = '{{ route('homepage.destroy', ':id') }}'.replace(
+                                                            var deleteUrl = '{{ route('pagedetail.destroy', ':id') }}'.replace(
                                                                 ':id',
                                                                 data);
 
