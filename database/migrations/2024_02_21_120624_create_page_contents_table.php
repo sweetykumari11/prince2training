@@ -23,9 +23,13 @@ return new class extends Migration
             $table->string('image_alt')->nullable();
             $table->string('icon')->nullable();
             $table->string('icon_alt')->nullable();
+            $table->string('heading_content1');
             $table->string('heading_subcontent1');
+            $table->string('heading_content2');
             $table->string('heading_subcontent2');
+            $table->string('heading_content3');
             $table->string('heading_subcontent3');
+            $table->string('heading_content4');
             $table->string('heading_subcontent4');
             $table->integer('created_by');
             $table->boolean('is_active')->default(1);

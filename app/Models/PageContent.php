@@ -24,9 +24,13 @@ class PageContent extends Model
         'icon_alt',
         'created_by',
         'is_active',
+        'heading_content1',
         'heading_subcontent1',
+        'heading_content2',
         'heading_subcontent2',
+        'heading_content3',
         'heading_subcontent3',
+        'heading_content4',
         'heading_subcontent4',
     ];
 }
