@@ -20,9 +20,6 @@
         </section>
         <!-- Main content -->
         <section class="content">
-            @if($errors->any())
-                {{ implode('', $errors->all('<div>:message</div>')) }}
-            @endif
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -72,23 +69,22 @@
                                         <input type="text" id="headings"
                                             class="form-control @error('heading') is-invalid @enderror" name="heading"
                                             value="{{ old('heading') }}">
-                                        @error('Heading')
+                                        @error('heading')
                                             <span class="error invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Content<span class="text-danger">*</label>
-                                        <input type="text" id="contents"
-                                            class="form-control @error('content') is-invalid @enderror" name="content"
-                                            value="{{ old('content') }}">
+                                        <label for="contents">Content<span class="text-danger">*</span></label>
+                                        <textarea id="contents" class="form-control @error('content') is-invalid @enderror" name="content" rows="5" cols="50">{{ old('content') }}</textarea>
                                         @error('content')
                                             <span class="error invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
+
                                     <div class="form-group">
                                         <label>Page Tag Line<span class="text-danger">*</label>
                                         <input type="text" id="pagetaglines"
@@ -102,7 +98,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Image<span class="text-danger">*</label>
-                                        <input type="file" id="home_image"
+                                        <input type="file" id="image"
                                             class="form-control @error('image') is-invalid @enderror" name="image"
                                             value="{{ old('image') }}">
                                         @error('image')
@@ -216,7 +212,7 @@
                                         <input type="text" id="headingcontents4"
                                             class="form-control @error('headingcontent4') is-invalid @enderror" name="headingcontent4"
                                             value="{{ old('headingcontent4') }}">
-                                        @error('headingsubcontent4')
+                                        @error('headingcontent4')
                                             <span class="error invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -245,10 +241,10 @@
         </section>
     </div>
 @endsection
-@push('child-scripts')
+ @push('child-scripts')
     <script>
         $(document).ready(function() {
-            $("#pagenames,#sections,#subsections,#home_image")
+            $("#pagenames,#sections,#subsections,#headings,#contents,#pagetaglines,#image,#imagealts,#icons,#iconalts,#headingcontents1,#headingsubcontents1,#headingcontents2,#headingsubcontents2,#headingcontents3,#headingsubcontents3,#headingcontents4,#headingsubcontents4")
                 .on("input", function() {
                     removeErrorMessages($(this));
                 });

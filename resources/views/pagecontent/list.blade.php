@@ -5,11 +5,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1>Home page</h1>
+                        <h1>Page Content</h1>
                     </div>
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="">Home Page</a></li>
+                            <li class="breadcrumb-item"><a href="">Page Content</a></li>
                         </ol>
                     </div>
                 </div>
@@ -102,61 +102,4 @@
         </section>
     </div>
 @endsection
-{{-- @push('child-scripts')
-    <script>
-        $(document).ready(function() {
-            $('#table').on('click', '.is_active', function() {
-                var activestatus = $(this).data('activestatus');
-                var dataVal = $(this).data('val');
-                var $toggle = $(this);
-                var url = '/changeblogStatus';
-                handleStatusToggle($toggle, activestatus, dataVal, url);
-            });
-             $('#table').on('click', '.is_popular', function() {
-                var popularstatus = $(this).data('popularstatus');
-                var dataVal = $(this).data('val');
-                var $toggle = $(this);
-                var url = '/blogsetpopular';
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: url,
-                    data: {
-                        'is_popular': popularstatus,
-                        'id': dataVal
-                    },
-                    success: function(data) {
-                        if (popularstatus === 1) {
-                            $toggle.removeClass('text-secondary').addClass('text-primary');
-                            $toggle.data('popularstatus', 0);
-                            $('#success-message').text(data.success).show();
-                            $('#danger-message').text(data.success).hide();
-                        } else {
-                            $toggle.removeClass('text-primary').addClass('text-secondary');
-                            $toggle.data('popularstatus', 1);
-                            $('#danger-message').text(data.success).show();
-                            $('#success-message').text(data.success).hide();
-                        }
-                    }
-                });
-            });
-            $(document).on('click', '.country-checkbox', function() {
-                var blogId = $(this).data('blog-id');
-                var isChecked = $(this).prop('checked');
-                var url = '/blog-country';
-                $.ajax({
-                    type: 'GET',
-                    dataType: 'json',
-                    url: url,
-                    data: {
-                        'id': blogId,
-                        'checked': isChecked
-                    },
-                    success: function(data) {
-                        $checkbox.prop('checked', data.deleted_at === null);
-                    }
-                });
-            });
-        });
-    </script>
-@endpush --}}
+
