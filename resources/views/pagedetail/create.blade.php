@@ -21,8 +21,8 @@
         <!-- Main content -->
         <section class="content">
             @if($errors->any())
-    {{ implode('', $errors->all('<div>:message</div>')) }}
-@endif
+                {{ implode('', $errors->all('<div>:message</div>')) }}
+            @endif
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -144,6 +144,17 @@
                                             </span>
                                         @enderror
                                     </div>
+                                    <div class="form-group">
+                                        <label>Heading Content1<span class="text-danger">*</label>
+                                        <input type="text" id="headingcontents1"
+                                            class="form-control @error('headingcontent1') is-invalid @enderror" name="headingcontent1"
+                                            value="{{ old('headingcontent1') }}">
+                                        @error('headingsubcontent1')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
                                     <div class="form-group">
                                         <label>Heading Subcontent1<span class="text-danger">*</label>
@@ -151,6 +162,17 @@
                                             class="form-control @error('headingsubcontent1') is-invalid @enderror" name="headingsubcontent1"
                                             value="{{ old('headingsubcontent1') }}">
                                         @error('headingsubcontent1')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Heading Content2<span class="text-danger">*</label>
+                                        <input type="text" id="headingcontents2"
+                                            class="form-control @error('headingcontent2') is-invalid @enderror" name="headingcontent2"
+                                            value="{{ old('headingcontent2') }}">
+                                        @error('headingcontent2')
                                             <span class="error invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -168,11 +190,33 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label>Heading Content3<span class="text-danger">*</label>
+                                        <input type="text" id="headingcontents3"
+                                            class="form-control @error('headingcontent3') is-invalid @enderror" name="headingcontent3"
+                                            value="{{ old('headingcontent3') }}">
+                                        @error('headingsubcontent3')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label>Heading Subcontent3<span class="text-danger">*</label>
                                         <input type="text" id="headingsubcontents3"
                                             class="form-control @error('headingsubcontent3') is-invalid @enderror" name="headingsubcontent3"
                                             value="{{ old('headingsubcontent3') }}">
                                         @error('headingsubcontent3')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Heading Content4<span class="text-danger">*</label>
+                                        <input type="text" id="headingcontents4"
+                                            class="form-control @error('headingcontent4') is-invalid @enderror" name="headingcontent4"
+                                            value="{{ old('headingcontent4') }}">
+                                        @error('headingsubcontent4')
                                             <span class="error invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

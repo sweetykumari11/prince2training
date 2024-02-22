@@ -74,13 +74,17 @@
                     <div class="form-group">
                         <label for="image">Image</label>
                         <div class="input-group">
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
+                                name="image">
                             @if ($pageContent->image)
                                 <div class="col-md-3">
-                                    <img src="{{ asset($pageContent->image) }}" alt="Current featured image" class="img-thumbnail" height="50" width="50" id="current_image">
-                                    <i class="fas fa-trash text-danger" id="removeCurrentImage" onclick="removeCurrentImage()"></i>
+                                    <img src="{{ asset($pageContent->image) }}" alt="Current featured image"
+                                        class="img-thumbnail" height="50" width="50" id="current_image">
+                                    <i class="fas fa-trash text-danger" id="removeCurrentImage"
+                                        onclick="removeCurrentImage()"></i>
                                     <input type="hidden" id="removeImage" name="removeImage" value>
-                                    <i class="fas fa-undo text-danger" id="undoRemoveImage" onclick="undoRemoveImage()" style="display: none;"></i>
+                                    <i class="fas fa-undo text-danger" id="undoRemoveImage" onclick="undoRemoveImage()"
+                                        style="display: none;"></i>
                                 </div>
                                 @error('image')
                                     <span class="error invalid-feedback d-block" role="alert">
@@ -93,8 +97,8 @@
                     </div>
                     <div class="form-group">
                         <label for="image_alt">Image Alt</label>
-                        <input type="text" class="form-control @error('image_alt') is-invalid @enderror"
-                            id="image_alt" name="image_alt" value="{{ $pageContent->image_alt }}">
+                        <input type="text" class="form-control @error('image_alt') is-invalid @enderror" id="image_alt"
+                            name="image_alt" value="{{ $pageContent->image_alt }}">
                         @error('image_alt')
                             <span class="error invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -105,19 +109,17 @@
                         <label for="icon">Icon<span class="text-danger">*</label>
                         <div class="input-group">
                             <div class="col-md-6">
-                                <input type="file"
-                                    class="form-control @error('icon') is-invalid @enderror" id="icon"
-                                    name="icon">
+                                <input type="file" class="form-control @error('icon') is-invalid @enderror"
+                                    id="icon" name="icon">
                             </div>
                             @if ($pageContent->icon)
                                 <div class="col-md-3">
-                                    <img src="{{ asset($pageContent->icon) }}" alt="Current Icon"
-                                        class="img-thumbnail" height="50" width="50" id="cIcon">
-                                    <i class="fas fa-trash text-danger" id="removeicon"
-                                        onClick="removeIcon()"></i>
+                                    <img src="{{ asset($pageContent->icon) }}" alt="Current Icon" class="img-thumbnail"
+                                        height="50" width="50" id="cIcon">
+                                    <i class="fas fa-trash text-danger" id="removeicon" onClick="removeIcon()"></i>
                                     <input type="hidden"id="removeicontxt" name="removeicontxt" value>
-                                    <i class="fas fa-undo text-danger" id="undoremoceicon"
-                                        onClick="undoIcon()" style="display: none";></i>
+                                    <i class="fas fa-undo text-danger" id="undoremoceicon" onClick="undoIcon()"
+                                        style="display: none";></i>
                                 </div>
                             @endif
                             @error('icon')
@@ -129,8 +131,8 @@
                     </div>
                     <div class="form-group">
                         <label for="icon_alt">Icon Alt</label>
-                        <input type="text" class="form-control @error('icon_alt') is-invalid @enderror"
-                            id="icon_alt" name="icon_alt" value="{{ $pageContent->icon_alt }}">
+                        <input type="text" class="form-control @error('icon_alt') is-invalid @enderror" id="icon_alt"
+                            name="icon_alt" value="{{ $pageContent->icon_alt }}">
                         @error('icon_alt')
                             <span class="error invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -155,12 +157,6 @@
     </div>
     </section>
 @endsection
-
-@push('child-scripts')
-    <script>
-        //
-    </script>
-@endpush
 @push('child-scripts')
     <script>
         function removeIcon() {
