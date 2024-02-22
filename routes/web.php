@@ -2,13 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\PageContentController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\BlogDetailController;
 use App\Http\Controllers\PermissionController;
-
+use App\Http\Controllers\PageContentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +34,7 @@ Route::resource('role',            RoleController::class);
 Route::resource('module',          ModuleController::class);
 Route::resource('permission',      PermissionController::class);
 Route::resource('pagecontent',      PageContentController::class);
+Route::resource('blogs',            BlogController::class);
+Route::resource('blogs.blogDetail',         BlogDetailController::class);
+
+Route::get('/country',             [CountryController::class, 'country']);

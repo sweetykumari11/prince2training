@@ -45,6 +45,12 @@
         <p>Page Details</p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{ route('blogs.index') }}" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>Blog</p>
+    </a>
+</li>
 
  {{-- <li class="nav-item">
     <a href="#" class="nav-link {{ Request::is('home') ? 'active' : '' }}">

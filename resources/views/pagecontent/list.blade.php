@@ -21,7 +21,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Home Page</h3>
+                                <h3 class="card-title">Page Content</h3>
                                 <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
                                         href="{{ route('pagecontent.create') }}"> Create
                                         New Record</a>

@@ -113,10 +113,10 @@ class PageContentController extends Controller
     }
 
 
-    public function destroy(PageContent $PageContent)
+    public function destroy(PageContent $pagecontent)
     {
-        $PageContent->delete();
+        $pagecontent->delete();
         session()->flash('danger', 'pagedetail Deleted successfully.');
-        return redirect()->route('pagedetail.index');
+        return redirect()->route('pagecontent.index');
     }
 }

@@ -248,7 +248,6 @@
                 .on("input", function() {
                     removeErrorMessages($(this));
                 });
-
             function removeErrorMessages(inputField) {
                 var parent = inputField.closest('.form-group');
                 var errorElement = parent.find('.error');
