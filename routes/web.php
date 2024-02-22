@@ -31,4 +31,4 @@ Route::resource('user',            UserController::class);
 Route::resource('role',            RoleController::class);
 Route::resource('module',          ModuleController::class);
 Route::resource('permission',      PermissionController::class);
-Route::resource('pagedetail',      PageContentController::class);
+Route::resource('pagecontent',      PageContentController::class);

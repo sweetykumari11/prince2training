@@ -18,11 +18,11 @@ class PageContentController extends Controller
             $query = PageContent::query();
             return Datatables::eloquent($query)->make(true);
         }
-        return view('pagedetail.list');
+        return view('pagecontent.list');
     }
     public function create()
     {
-        return view('pagedetail.create');
+        return view('pagecontent.create');
     }
     public function store(StorePagecontentRequest $request)
     {
@@ -62,28 +62,61 @@ class PageContentController extends Controller
             'created_by' => Auth::user()->id
         ]);
         session()->flash('success', 'pagedetail Created successfully.');
+        return redirect()->route('pagecontent.index');
+    }
+    public function edit(PageContent $pagedetail)
+    {
+        return view('pagecontent.edit', compact('pagedetail'));
+    }
+    public function update(StorePagecontentRequest $request, $id)
+    {
+        $pageContent = PageContent::findOrFail($id);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $image_location = 'Images/pagedetail/';
+            $image->move($image_location, $image_name);
+            $pageContent->image = $image_location . $image_name;
+        }
+
+        if ($request->file('icon')) {
+            $icon = $request->file('icon');
+            $icon_name = time() . '_' . $icon->getClientOriginalName();
+            $icon_location = 'Images/pagedetail/';
+            $icon->move($icon_location, $icon_name);
+            $pageContent->icon = $icon_location . $icon_name;
+        }
+
+        $pageContent->update([
+            'page_name' => $request->pagename,
+            'section' => $request->section,
+            'sub_section' => $request->subsection,
+            'heading' => $request->heading,
+            'content' => $request->content,
+            'page_tag_line' => $request->pagetagline,
+            'image_alt' => $request->imagealt,
+            'icon_alt' => $request->iconalt,
+            'heading_content1' => $request->headingcontent1,
+            'heading_subcontent1' => $request->headingsubcontent1,
+            'heading_content2' => $request->headingcontent2,
+            'heading_subcontent2' => $request->headingsubcontent2,
+            'heading_content3' => $request->headingcontent3,
+            'heading_subcontent3' => $request->headingsubcontent3,
+            'heading_content4' => $request->headingcontent4,
+            'heading_subcontent4' => $request->headingsubcontent4,
+            // Assuming 'created_by' should not be updated during editing
+        ]);
+
+        session()->flash('success', 'Page detail updated successfully.');
         return redirect()->route('pagedetail.index');
     }
-    public function edit(Homepage $homepage)
+
+
+    public function destroy(PageContent $PageContent)
     {
-        return view('pagedetail.edit', compact('homepage'));
-    }
-    public function update(UpdatePagedetailRequest $request, Homepage $homepage)
-    {
-
-
-        $homepage->pagename = $request->pagename;
-        $homepage->section = $request->section;
-        $homepage->subsection = $request->subsection;
-        $homepage->save();
-        return redirect()->route('homepage.index')->with('success', 'Homepage Updated Successfully');
-    }
-
-    public function destroy(Homepage $homepage)
-    {
-
-        $homepage->delete();
-        session()->flash('danger', 'Homepage Deleted successfully.');
+        $PageContent->delete();
+        session()->flash('danger', 'pagedetail Deleted successfully.');
         return redirect()->route('pagedetail.index');
     }
 }

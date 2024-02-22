@@ -40,7 +40,7 @@
     </ul>
 </li>
 <li class="nav-item">
-    <a href="{{ route('pagedetail.index') }}" class="nav-link">
+    <a href="{{ route('pagecontent.index') }}" class="nav-link">
         <i class="nav-icon fas fa-th"></i>
         <p>Page Details</p>
     </a>
