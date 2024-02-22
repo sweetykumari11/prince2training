@@ -57,8 +57,8 @@
                                                         name: 'section'
                                                     },
                                                     {
-                                                        data: 'subsection',
-                                                        name: 'subsection'
+                                                        data: 'sub_section',
+                                                        name: 'sub_section'
                                                     },
                                                     {
                                                         data: 'id',
