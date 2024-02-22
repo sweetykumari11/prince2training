@@ -6,7 +6,7 @@ use App\Models\PageContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\Datatables;
-use App\Http\Requests\UpdatePagedetailRequest;
+use App\Http\Requests\UpdatePagecontentRequest;
 use App\Http\Requests\StorePagecontentRequest;
 
 
@@ -64,39 +64,38 @@ class PageContentController extends Controller
         session()->flash('success', 'pagedetail Created successfully.');
         return redirect()->route('pagecontent.index');
     }
-    public function edit(PageContent $pagedetail)
+    public function edit(PageContent $pagecontent)
     {
-        return view('pagecontent.edit', compact('pagedetail'));
+        return view('pagecontent.edit', compact('pagecontent'));
     }
-    public function update(StorePagecontentRequest $request, $id)
+    public function update(UpdatePagecontentRequest $request, PageContent $pagecontent)
     {
-        $pageContent = PageContent::findOrFail($id);
-
-        if ($request->file('image')) {
-            $image = $request->file('image');
-            $image_name = time() . '_' . $image->getClientOriginalName();
-            $image_location = 'Images/pagedetail/';
-            $image->move($image_location, $image_name);
-            $pageContent->image = $image_location . $image_name;
+        $image = $pagecontent->image;
+        $icon = $pagecontent->icon;
+        if ($request->hasFile('image')) {
+            if ($image && file_exists(public_path($image))) {
+                unlink(public_path($image));
+            }
+            $image = $request->file('image')->store('Images/pagedetail');
         }
 
-        if ($request->file('icon')) {
-            $icon = $request->file('icon');
-            $icon_name = time() . '_' . $icon->getClientOriginalName();
-            $icon_location = 'Images/pagedetail/';
-            $icon->move($icon_location, $icon_name);
-            $pageContent->icon = $icon_location . $icon_name;
+        if ($request->hasFile('icon')) {
+            if ($icon && file_exists(public_path($icon))) {
+                unlink(public_path($icon));
+            }
+            $icon = $request->file('icon')->store('Images/pagedetail');
         }
-
-        $pageContent->update([
-            'page_name' => $request->pagename,
+        $pagecontent->update([
+            'page_name' => $request->page_name,
             'section' => $request->section,
             'sub_section' => $request->subsection,
             'heading' => $request->heading,
             'content' => $request->content,
             'page_tag_line' => $request->pagetagline,
-            'image_alt' => $request->imagealt,
-            'icon_alt' => $request->iconalt,
+            'image' => $image,
+            'image_alt' => $request->image_alt,
+            'icon' => $icon,
+            'icon_alt' => $request->icon_alt,
             'heading_content1' => $request->headingcontent1,
             'heading_subcontent1' => $request->headingsubcontent1,
             'heading_content2' => $request->headingcontent2,
@@ -105,14 +104,11 @@ class PageContentController extends Controller
             'heading_subcontent3' => $request->headingsubcontent3,
             'heading_content4' => $request->headingcontent4,
             'heading_subcontent4' => $request->headingsubcontent4,
-            // Assuming 'created_by' should not be updated during editing
+            'created_by' => Auth::user()->id
         ]);
-
-        session()->flash('success', 'Page detail updated successfully.');
-        return redirect()->route('pagedetail.index');
+        session()->flash('success', 'pagecontent updated successfully.');
+        return redirect()->route('pagecontent.index');
     }
-
-
     public function destroy(PageContent $pagecontent)
     {
         $pagecontent->delete();
