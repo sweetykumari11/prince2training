@@ -7,11 +7,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1>User</h1>
+                        <h1>Page Content Form</h1>
                     </div>
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('pagedetail.index') }}">pagedetail</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('pagedetail.index') }}">Page Content Form</a></li>
                             <li class="breadcrumb-item active">Create pagedetail</li>
                         </ol>
                     </div>
@@ -20,6 +20,9 @@
         </section>
         <!-- Main content -->
         <section class="content">
+            @if($errors->any())
+    {{ implode('', $errors->all('<div>:message</div>')) }}
+@endif
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -65,11 +68,122 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Images<span class="text-danger">*</label>
+                                        <label>Heading<span class="text-danger">*</label>
+                                        <input type="text" id="headings"
+                                            class="form-control @error('heading') is-invalid @enderror" name="heading"
+                                            value="{{ old('heading') }}">
+                                        @error('Heading')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Content<span class="text-danger">*</label>
+                                        <input type="text" id="contents"
+                                            class="form-control @error('content') is-invalid @enderror" name="content"
+                                            value="{{ old('content') }}">
+                                        @error('content')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Page Tag Line<span class="text-danger">*</label>
+                                        <input type="text" id="pagetaglines"
+                                            class="form-control @error('pagetagline') is-invalid @enderror" name="pagetagline"
+                                            value="{{ old('pagetagline') }}">
+                                        @error('pagetagline')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Image<span class="text-danger">*</label>
                                         <input type="file" id="home_image"
                                             class="form-control @error('image') is-invalid @enderror" name="image"
                                             value="{{ old('image') }}">
                                         @error('image')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Image Alt<span class="text-danger">*</label>
+                                        <input type="text" id="imagealts"
+                                            class="form-control @error('imagealt') is-invalid @enderror" name="imagealt"
+                                            value="{{ old('imagealt') }}">
+                                        @error('imagealt')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Icon<span class="text-danger">*</label>
+                                        <input type="file" id="icons"
+                                            class="form-control @error('icon') is-invalid @enderror" name="icon"
+                                            value="{{ old('icon') }}">
+                                        @error('icon')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Icon Alt<span class="text-danger">*</label>
+                                        <input type="text" id="iconalts"
+                                            class="form-control @error('iconalt') is-invalid @enderror" name="iconalt"
+                                            value="{{ old('iconalt') }}">
+                                        @error('icon')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Heading Subcontent1<span class="text-danger">*</label>
+                                        <input type="text" id="headingsubcontents1"
+                                            class="form-control @error('headingsubcontent1') is-invalid @enderror" name="headingsubcontent1"
+                                            value="{{ old('headingsubcontent1') }}">
+                                        @error('headingsubcontent1')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Heading Subcontent2<span class="text-danger">*</label>
+                                        <input type="text" id="headingsubcontents2"
+                                            class="form-control @error('headingsubcontent2') is-invalid @enderror" name="headingsubcontent2"
+                                            value="{{ old('headingsubcontent2') }}">
+                                        @error('headingsubcontent2')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Heading Subcontent3<span class="text-danger">*</label>
+                                        <input type="text" id="headingsubcontents3"
+                                            class="form-control @error('headingsubcontent3') is-invalid @enderror" name="headingsubcontent3"
+                                            value="{{ old('headingsubcontent3') }}">
+                                        @error('headingsubcontent3')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Heading Subcontent4<span class="text-danger">*</label>
+                                        <input type="text" id="headingsubcontents4"
+                                            class="form-control @error('headingsubcontent4') is-invalid @enderror" name="headingsubcontent4"
+                                            value="{{ old('headingsubcontent4') }}">
+                                        @error('headingsubcontent4')
                                             <span class="error invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

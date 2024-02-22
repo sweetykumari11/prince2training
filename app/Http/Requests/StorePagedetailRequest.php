@@ -22,10 +22,20 @@ class StorePagedetailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pagename' => 'required',
-            'section' => 'required',
-            'subsection' => 'required',
+            'pagename' => 'required|string',
+            'section' => 'required|string',
+            'subsection' => 'required|string',
+            'heading' => 'required|string',
+            'content' => 'required|string',
+            'pagetagline' => 'required|string',
             'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'imagealt' => 'required|string',
+            'icon' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'iconalt' => 'required|string',
+            'headingsubcontent1' => 'required|string',
+            'headingsubcontent2' => 'required|string',
+            'headingsubcontent3' => 'required|string',
+            'headingsubcontent4' => 'required|string',
         ];
     }
 }

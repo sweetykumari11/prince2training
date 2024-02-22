@@ -18,11 +18,15 @@ return new class extends Migration
             $table->string('sub_section');
             $table->string('heading');
             $table->text('content');
-            $table->string('page_tag_line')->nullable();
+            $table->string('page_tag_line');
             $table->string('image')->nullable();
             $table->string('image_alt')->nullable();
             $table->string('icon')->nullable();
             $table->string('icon_alt')->nullable();
+            $table->string('heading_subcontent1');
+            $table->string('heading_subcontent2');
+            $table->string('heading_subcontent3');
+            $table->string('heading_subcontent4');
             $table->integer('created_by');
             $table->boolean('is_active')->default(1);
             $table->softDeletes();

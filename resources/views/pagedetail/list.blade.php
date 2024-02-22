@@ -49,8 +49,8 @@
                                                 ajax: '{{ route('pagedetail.index') }}',
 
                                                 columns: [{
-                                                        data: 'pagename',
-                                                        name: 'pagename'
+                                                        data: 'page_name',
+                                                        name: 'page_name'
                                                     },
                                                     {
                                                         data: 'section',
