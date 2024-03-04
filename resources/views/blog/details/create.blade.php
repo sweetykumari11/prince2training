@@ -99,13 +99,6 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" name="is_active"
-                                                id="customSwitch2" checked>
-                                            <label class="custom-control-label" for="customSwitch2">Active</label>
-                                        </div>
-                                    </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Create</button>
                                     </div>

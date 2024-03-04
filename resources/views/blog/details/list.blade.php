@@ -41,7 +41,7 @@
                                                 <th scope="col">Id</th>
                                                 <th scope="col">Blog Name</th>
                                                 <th scope="col">Meta tittle</th>
-                                                <th scope="col">Active</th>
+                                                {{-- <th scope="col">Active</th> --}}
                                                 <th scope="col">Created At</th>
                                                 <th scope="col">Created By</th>
                                                 <th scope="col">Action</th>
@@ -69,19 +69,19 @@
                                                         data: 'meta_title',
                                                         name: 'meta_title'
                                                     },
-                                                    {
-                                                        data: 'is_active',
-                                                        name: 'is_active',
-                                                        render: function(data, type, full, meta) {
-                                                            if (data) {
-                                                                return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="0" data-val="' +
-                                                                    full.id + '"></i>';
-                                                            } else {
-                                                                return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="1" data-val="' +
-                                                                    full.id + '"></i>';
-                                                            }
-                                                        }
-                                                    },
+                                                    // {
+                                                    //     data: 'is_active',
+                                                    //     name: 'is_active',
+                                                    //     render: function(data, type, full, meta) {
+                                                    //         if (data) {
+                                                    //             return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="0" data-val="' +
+                                                    //                 full.id + '"></i>';
+                                                    //         } else {
+                                                    //             return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="1" data-val="' +
+                                                    //                 full.id + '"></i>';
+                                                    //         }
+                                                    //     }
+                                                    // },
                                                     {
                                                         data: 'created_at',
                                                         name: 'created_at',

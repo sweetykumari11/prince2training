@@ -83,7 +83,6 @@
                                                             }
                                                         }
                                                     },
-
                                                     {
                                                         data: 'is_active',
                                                         name: 'is_active',
@@ -174,7 +173,7 @@
 
                                                             var action = '<a href="' + editUrl + '" class="fas fa-edit"></a>';
 
-                                                            if (@json($isAdmin)) {
+                                                            // if (@json($isAdmin)) {
                                                                 action += '<a href="#" class="delete-link" ' +
                                                                     '   onclick="event.preventDefault(); document.getElementById(\'' +
                                                                     deleteFormId + '\').submit();">' +
@@ -186,10 +185,13 @@
                                                                     '   @csrf' +
                                                                     '   @method('DELETE')' +
                                                                     '</form>';
-                                                            }
+                                                            //}
                                                             return action;
                                                         }
                                                     },
+
+
+
 
                                                 ]
                                             });
@@ -218,6 +220,7 @@
                 var popularstatus = $(this).data('popularstatus');
                 var dataVal = $(this).data('val');
                 var $toggle = $(this);
+                //alert('ndkvndfkgnkdf');
                 var url = '/blogsetpopular';
                 $.ajax({
                     type: "GET",
@@ -227,13 +230,16 @@
                         'is_popular': popularstatus,
                         'id': dataVal
                     },
+                    //alert('suvcess');
                     success: function(data) {
+                        alert('suvcee');
                         if (popularstatus === 1) {
                             $toggle.removeClass('text-secondary').addClass('text-primary');
                             $toggle.data('popularstatus', 0);
                             $('#success-message').text(data.success).show();
                             $('#danger-message').text(data.success).hide();
                         } else {
+                            alert('suvcee');
                             $toggle.removeClass('text-primary').addClass('text-secondary');
                             $toggle.data('popularstatus', 1);
                             $('#danger-message').text(data.success).show();

@@ -40,6 +40,7 @@
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Roles</th>
                                                 <th scope="col">Active</th>
+                                                <th scope="col">Password</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -71,7 +72,15 @@
                                                         data: 'is_active',
                                                         name: 'is_active'
                                                     },
-
+                                                    {
+                                                        data: 'password',
+                                                        name: 'password',
+                                                        render: function(data, type, full, meta) {
+                                                            return '<a href="/password/reset/' + full.id +
+                                                                '" id="password-reset-link-' + full.id +
+                                                                '" class="btn btn-primary btn-sm">Reset</a>';
+                                                        }
+                                                    },
                                                     {
                                                         data: 'id',
                                                         name: 'actions',

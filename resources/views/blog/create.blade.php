@@ -114,12 +114,12 @@
                                         <input id="blog_image2" type="file"
                                             class="form-control @error('featured_img2') is-invalid @enderror"
                                             name="featured_img2" value="{{ old('featured_img2') }}" />
+                                        @error('featured_img2')
+                                            <span class="error invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-                                    @error('featured_img2')
-                                        <span class="error invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Author Name<span class="text-danger">*</span></label>
@@ -208,26 +208,10 @@
             $("#pieces").on("change", function() {
                 resetBorderColor();
             });
-            // $("#summernote").summernote({
-            //     height: 300,
-            //     focus: true,
-            // });
-            // if ($("#summernote").hasClass("is-invalid")) {
-            //     $("#summernote").next(".note-editor").css("border-color", "red");
-            // }
             $("#blog_category,#blog_slug,#blog_tittle,#blog_description,#blog_image1,#blog_image2,#blog_authorname,#blog_date")
                 .on("input", function() {
                     removeErrorMessages($(this));
                 });
-
-            // $("#summernote").on("summernote.change", function(we, contents, $editable) {
-            //     resetSummernoteBorder();
-            // });
-
-            // function resetSummernoteBorder() {
-            //     $("#summernote").removeClass("is-invalid");
-            //     $("#summernote").next(".note-editor").css("border-color", "");
-            // }
             $("#blog_tittle").on("input", function() {
                 removeErrorMessages($(this));
                 convertToSlug();

@@ -19,14 +19,9 @@
             </div><!-- /.container-fluid -->
         </section>
         <!-- Main content -->
-        {{-- <section class="content">
-            @if ($errors->any())
-            {!! implode('', $errors->all('<div>:message</div>')) !!}
-        @endif --}}
-
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Edit Pagecontent</h3>
@@ -135,8 +130,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
-
                                     <div class="form-group">
                                         <label>Image Alt<span class="text-danger">*</span></label>
                                         <input type="text" id="imagealts"
@@ -199,9 +192,6 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-
-
-                                    <!-- Heading Subcontent 1 -->
                                     <div class="form-group">
                                         <label>Heading Subcontent 1<span class="text-danger">*</span></label>
                                         <input type="text"
@@ -213,8 +203,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
-                                    <!-- Heading Content 2 -->
                                     <div class="form-group">
                                         <label>Heading Content 2<span class="text-danger">*</span></label>
                                         <input type="text"
@@ -226,8 +214,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
-                                    <!-- Heading Subcontent 2 -->
                                     <div class="form-group">
                                         <label>Heading Subcontent 2<span class="text-danger">*</span></label>
                                         <input type="text"
@@ -239,10 +225,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
-                                    <!-- Similarly for Heading Content 3, Heading Subcontent 3, Heading Content 4, Heading Subcontent 4 -->
-
-                                    <!-- Heading Content 3 -->
                                     <div class="form-group">
                                         <label>Heading Content 3<span class="text-danger">*</span></label>
                                         <input type="text"
@@ -298,6 +280,36 @@
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Activity</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- The time line -->
+                        <div class="timeline">
+                            <!-- timeline time label -->
+                            @foreach ($pagecontent->logActivities as $activity)
+                                <div class="time-label">
+                                    <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-solid fa-pen bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <div class="card-header">
+                                            <h3 class="card-title">{{ $activity->creator->name }}</h3>
+                                        </div>
+                                        <h3 class="timeline-header no-border"> {{ $activity->activity }} </a></h3>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div>
+                                <i class="fas fa-clock bg-gray"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

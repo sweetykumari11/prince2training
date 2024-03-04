@@ -19,12 +19,31 @@ class StoreUserRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    // public function rules(): array
+    // {
+    //     return [
+    //         'name' => 'required',
+    //         'email' => 'required|email|unique:users,email',
+    //         'password'=>'required|confirmed|min:8'
+    //     ];
+    // }
     public function rules(): array
     {
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password'=>'required|confirmed|min:8'
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
+            ],
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'password.regex' => 'The password must be at least 8 characters long and include at least one uppercase letter, one number, and one special character.',
         ];
     }
 }

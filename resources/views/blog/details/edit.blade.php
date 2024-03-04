@@ -123,13 +123,6 @@
                                             <div class="error invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" name="is_active"
-                                                id="customSwitch1" {{ $blogDetail->is_active == 1 ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="customSwitch1">Active</label>
-                                        </div>
-                                    </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>

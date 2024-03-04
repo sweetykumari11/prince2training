@@ -22,12 +22,12 @@ class StoreBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            //'category_id'=>'required|integer',
+            'category_id'=>'required|integer',
             'slug'=>'required',
             'title'=>'required|string|min:3|max:100',
             'short_description'=>'required|string|min:10|max:200',
             'country_id'=>'required|integer',
-            'featured_img1'=>'required',
+            'featured_img1'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'featured_img2'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'author_name'=>'required|string|min:2|max:50',
             'added_date'=>'required|date',

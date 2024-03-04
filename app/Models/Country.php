@@ -13,25 +13,19 @@ class Country extends Model
     use HasFactory, SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'country_code',
-        'tka_id',
         'name',
+        'country_code',
+        'description',
         'currency',
-        'currency_currency_title',
+        'iso3',
+        'currency',
         'currency_symbol',
         'currency_symbol_html',
-        'iso3',
-        'sales_tax_label',
-        'charge_vat',
-        'vat_percentage',
-        'vat_amount_elearning',
-        'conversion_required',
-        'exchange_rate',
-        'opening_hours',
-        'opening_days',
-        'date_format',
-        'isAdvert',
-        'map_id',
+        'currency_title',
+        'flagimage',
+        'is_active',
+        'is_popular',
+        'created_by'
     ];
     public function categories()
     {
@@ -41,12 +35,16 @@ class Country extends Model
     {
         return $this->belongsToMany(Blog::class, 'country_blog')->withTimestamps();
     }
-    public function courses()
+    public function logActivities()
     {
-        return $this->belongsToMany(Course::class, 'country_courses')->withTimestamps()->withPivot(['is_popular', 'deleted_at']);
+        return $this->morphMany(LogActivity::class, 'module');
     }
-    public function topics()
-    {
-        return $this->belongsToMany(Topic::class, 'country_topics')->withTimestamps();
-    }
+    // public function courses()
+    // {
+    //     return $this->belongsToMany(Course::class, 'country_courses')->withTimestamps()->withPivot(['is_popular', 'deleted_at']);
+    // }
+    // public function topics()
+    // {
+    //     return $this->belongsToMany(Topic::class, 'country_topics')->withTimestamps();
+    // }
 }

@@ -4,12 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePagedetailRequest extends FormRequest
+class StoreBlogdetailsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -22,10 +22,12 @@ class UpdatePagedetailRequest extends FormRequest
     public function rules()
     {
         return [
-            'pagename' => 'required',
-            'section' => 'required',
-            'subsection' => 'required',
-            //'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+
+            'blog_id'=>'required',
+            'keywords'=>'required',
+            'tittle'=>'required|string|min:3|max:100',
+            'description'=>'required|string|min:5',
+            'summary'=>'required',
 
         ];
     }

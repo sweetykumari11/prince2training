@@ -22,7 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'created_by'
+        'created_by',
+        'reset_token',
+        'last_login_at',
+        'password_changed_at'
+
     ];
 
     /**
@@ -49,8 +53,7 @@ class User extends Authenticatable
         return $this->belongsTo(User::class, 'created_by');
     }
     public function user()
-{
-     return $this->belongsTo(User::class, "user_id", "id")->with('roles');
-}
-
+    {
+        return $this->belongsTo(User::class, "user_id", "id")->with('roles');
+    }
 }

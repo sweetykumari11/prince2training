@@ -11,6 +11,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\BlogDetailController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PageContentController;
+use App\Http\Controllers\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,23 @@ Route::resource('module',          ModuleController::class);
 Route::resource('permission',      PermissionController::class);
 Route::resource('pagecontent',      PageContentController::class);
 Route::resource('blogs',            BlogController::class);
+Route::resource('tag',              TagController::class);
+Route::resource('countries',              CountryController::class);
+
 Route::resource('blogs.blogDetail',         BlogDetailController::class);
 
-Route::get('/country',             [CountryController::class, 'country']);
+
+Route::get('changeblogStatus',        [BlogController::class, 'blogStatus']);
+Route::get('changecountryStatus',        [CountryController::class, 'countryStatus']);
+
+Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
+
+// Password Reset Routes
+Route::get('/password/reset/{id}', [UserController::class, 'Reset'])->name('password.reset');
+
+Route::get('/reset-password/{id}', [UserController::class, 'showResetForm'])->name('reset.password');
+
+Route::post('/change-password', [UserController::class, 'changepassword'])->name('password.change');
+
+
+

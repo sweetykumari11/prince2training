@@ -33,4 +33,8 @@ class PageContent extends Model
         'heading_content4',
         'heading_subcontent4',
     ];
+    public function logActivities()
+    {
+        return $this->morphMany(LogActivity::class, 'module');
+    }
 }

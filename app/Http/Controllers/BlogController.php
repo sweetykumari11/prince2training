@@ -39,7 +39,8 @@ class BlogController extends Controller
                 'countries' => function ($query) {
                     $query->select('countries.*', 'country_blog.deleted_at as pivot_deleted_at','country_blog.is_popular as pivot_is_popular');
                 },
-            ])->where('country_id', session('country')->id);
+            ]);
+            //->where('country_id', session('country')->id);
             return Datatables::eloquent($query)->make(true);
         }
         return view('blog.list');
@@ -79,8 +80,7 @@ class BlogController extends Controller
         }
         $is_active = $request->is_active2 == "on" ? 1 : 0;
         $blog = Blog::create([
-           // "category_id" => $request->category_id,
-           "category_id" =>'1',
+           "category_id" => $request->category_id,
             "title" => $request->title,
             "short_description" => $request->short_description,
             "featured_img1" => $filepath1,
@@ -132,11 +132,12 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+       // print_r($blog);
+       // die();
         $tags = Tag::all();
         $category = category::where('is_active', 1)->get();
         $country = Country::all();
         $slug = $blog->slugs()->first();
-
         return view('blog.edit', compact('blog', 'category', 'slug', 'tags', 'country'));
     }
     /**
@@ -156,6 +157,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->short_description = $request->short_description;
         $blog->country_id = $request->country_id;
+        $blog->country_id = '1';
         $blog->author_name = $request->author_name;
         $blog->added_date = $request->added_date;
         $blog->slugs()->updateOrCreate(['slug' => $request->slug]);
@@ -241,6 +243,7 @@ class BlogController extends Controller
         }
     }
     public function setPopular(Request $request){
+
         $blog = Blog::find($request->id);
         $blog->countries()->updateExistingPivot(session('country')->id, [
             'is_popular' =>  $request->is_popular,
