@@ -81,6 +81,7 @@
                                                             }
                                                         }
                                                     },
+
                                                     {
                                                         data: 'password',
                                                         name: 'password',
@@ -96,24 +97,8 @@
                                                         orderable: false,
                                                         searchable: false,
                                                         render: function(data, type, full, meta) {
-                                                            var editUrl = '{{ route('user.edit', ':id') }}'.replace(':id',
-                                                                data);
-                                                            var deleteFormId = 'delete-form-' + data;
-                                                            var deleteUrl = '{{ route('user.destroy', ':id') }}'.replace(':id',
-                                                                data);
-
-                                                            return '<a href="' + editUrl + '" class="fas fa-edit"></a>' +
-                                                                '<a href="#" class="delete-link" ' +
-                                                                '   onclick="event.preventDefault(); document.getElementById(\'' +
-                                                                deleteFormId + '\').submit();">' +
-                                                                '   <i class="fas fa-trash text-danger"></i>' +
-                                                                '</a>' +
-                                                                '<form id="' + deleteFormId + '" ' +
-                                                                '   action="' + deleteUrl +
-                                                                '" method="POST" style="display: none;">' +
-                                                                '   @csrf' +
-                                                                '   @method('DELETE')' +
-                                                                '</form>';
+                                                            var editUrl = '{{ route('user.edit', ':id') }}'.replace(':id', data);
+                                                            return '<a href="' + editUrl + '" class="fas fa-edit"></a>';
                                                         }
                                                     },
                                                 ]
