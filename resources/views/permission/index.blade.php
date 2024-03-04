@@ -18,7 +18,7 @@
             </div><!-- /.container-fluid -->
         </section>
         <!-- Main content -->
-        <section class="content">
+        {{-- <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -76,6 +76,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Permissions </h3>
+                                <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
+                                        href="{{ route('permission.create') }}"> Create New Permission</a>
+                                </div>
 
                             </div>
                             <!-- /.card-header -->
@@ -156,13 +159,7 @@
                                         });
                                     </script>
                                 @endpush
-                                <div class="card-footer">
-                                    <div class="float-left"> <a class="btn btn-block btn-primary"
-                                            href="{{ route('permission.create') }}"> Create New Permission</a>
-                                    </div>
-                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

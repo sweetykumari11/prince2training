@@ -18,7 +18,7 @@
             </div><!-- /.container-fluid -->
         </section>
         <!-- Main content -->
-        <section class="content">
+        {{-- <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -69,6 +69,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Module list</h3>
+                                <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
+                                    href="{{ route('module.create') }}"> Create New module</a>
+                            </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
