@@ -3,16 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends FormRequest
+class RegionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return true ;
     }
 
     /**
@@ -23,12 +22,10 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+
             'name' => 'required',
-            'email' => [
-                'email',
-                Rule::unique('users')->ignore($this->route('user'))
-            ],
-            'roles' =>'required',
+            'country_id'=>'required',
+
         ];
     }
 }

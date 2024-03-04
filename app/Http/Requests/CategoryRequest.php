@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,17 +17,15 @@ class UpdateUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
             'name' => 'required',
-            'email' => [
-                'email',
-                Rule::unique('users')->ignore($this->route('user'))
-            ],
-            'roles' =>'required',
+            'slug' => 'required',
+            'icon' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'logo'=>'required|image|mimes:jpg,png,jpeg|max:2048',
         ];
     }
 }

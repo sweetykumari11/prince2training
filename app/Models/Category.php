@@ -4,10 +4,11 @@ namespace App\Models;
 
 use App\Models\Slug;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\LogActivity;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -20,6 +21,7 @@ class Category extends Model
         'slug',
         'icon',
         'logo',
+        'content',
         'is_active',
         'is_popular',
         'is_technical',
@@ -46,14 +48,14 @@ class Category extends Model
     {
         return $this->morphMany(Slug::class, 'entity');
     }
-    public function topics()
-    {
-        return $this->hasMany(Topic::class, 'category_id');
-    }
-    public function faqs()
-    {
-        return $this->hasMany(FAQ::class, 'entity_id')->where('entity_type', 'Course');
-    }
+    // public function topics()
+    // {
+    //     return $this->hasMany(Topic::class, 'category_id');
+    // }
+    // public function faqs()
+    // {
+    //     return $this->hasMany(FAQ::class, 'entity_id')->where('entity_type', 'Course');
+    // }
     public function logActivities()
     {
         return $this->morphMany(LogActivity::class, 'module');

@@ -11,7 +11,7 @@ class Slug extends Model
 
     protected $fillable = ['slug'];
     public $timestamps = false;
-    
+
     public function entity()
     {
         return $this->morphTo();
