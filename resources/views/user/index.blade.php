@@ -70,7 +70,16 @@
                                                     },
                                                     {
                                                         data: 'is_active',
-                                                        name: 'is_active'
+                                                        name: 'is_active',
+                                                        render: function(data, type, full, meta) {
+                                                            if (data) {
+                                                                return '<i class="fa fa-check-circle text-success is_active" data-activestatus="1" data-val="' +
+                                                                    full.id + '"></i>';
+                                                            } else {
+                                                                return '<i class="fa fa-times-circle text-danger is_active" data-activestatus="0" data-val="' +
+                                                                    full.id + '"></i>';
+                                                            }
+                                                        }
                                                     },
                                                     {
                                                         data: 'password',

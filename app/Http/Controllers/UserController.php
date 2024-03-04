@@ -1,19 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\PasswordRequest;
+use Carbon\Carbon;
 use App\Models\User;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
-
-use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\Datatables;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
+
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use Yajra\DataTables\Facades\Datatables;
+
 class UserController extends Controller
 {
     /**
@@ -40,11 +43,14 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+
+        $is_active = $request->is_active == "on" ? 1 : 0;
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
-            'created_by' => 1
+            'is_active' => $is_active,
+            'created_by' =>  Auth::user()->id,
         ]);
         return redirect()->route('user.index')
             ->with('success', 'User created successfully.');
@@ -69,11 +75,14 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $is_active = $request->is_active == "on" ? 1 : 0;
+
+        $user->update(array_merge($request->all(), ['is_active' => $is_active]));
+
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
         $user->assignRole($request->input('roles'));
-        return redirect()->route('user.index')
-            ->with('success', 'User updated successfully');
+
+        return redirect()->route('user.index')->with('success', 'User updated successfully');
     }
 
     /**
