@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Carbon\Carbon;
 use App\Models\User;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -43,14 +43,13 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-
-        $is_active = $request->is_active == "on" ? 1 : 0;
+        $is_active = $request->is_active2 == "on" ? 1 : 0;
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
-            'is_active' => $is_active,
             'created_by' =>  Auth::user()->id,
+            "is_active" => $is_active
         ]);
         return redirect()->route('user.index')
             ->with('success', 'User created successfully.');
@@ -75,15 +74,23 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $is_active = $request->is_active == "on" ? 1 : 0;
 
-        $user->update(array_merge($request->all(), ['is_active' => $is_active]));
+            $user->update($request->all());
+            $is_active = $request->is_active == "on" ? 1 : 0;
+            $user->is_active = $is_active;
+            $user->save();
+            DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+            $user->assignRole($request->input('roles'));
+            return redirect()->route('user.index')
+                ->with('success', 'User updated successfully');
+        }
 
-        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
-        $user->assignRole($request->input('roles'));
-
-        return redirect()->route('user.index')->with('success', 'User updated successfully');
-    }
+        // $user->update($request->all());
+        // DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+        // $user->assignRole($request->input('roles'));
+        // return redirect()->route('user.index')
+        //     ->with('success', 'User updated successfully');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -99,7 +106,7 @@ class UserController extends Controller
         $data = User::find($request->id);
         Mail::to($data->email, $data->name)->send(new ResetPassword($data));
         return redirect()->route('user.index')
-        ->with('success', 'Password sent successfully to your mail');
+            ->with('success', 'Password sent successfully to your mail');
     }
     public function showResetForm(Request $request)
     {
@@ -112,7 +119,7 @@ class UserController extends Controller
         $user = User::find($request->id);
         $token = Str::random(60);
         $currentDateTime = Carbon::now();
-        $user->update(['reset_token' => $token,'password'=>$request->confirmPassword,'password_changed_at'=>$currentDateTime]);
+        $user->update(['reset_token' => $token, 'password' => $request->confirmPassword, 'password_changed_at' => $currentDateTime]);
         return redirect()->back()->with('success', 'Password changed successfully!');
     }
 }
