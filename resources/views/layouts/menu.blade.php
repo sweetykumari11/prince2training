@@ -58,27 +58,27 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('countries.index') }}" class="nav-link">
-        <i class="nav-icon fas fa-th"></i>
-        <p>Country</p>
-    </a>
-</li>
-<li class="nav-item">
     <a href="{{ route('category.index') }}" class="nav-link">
         <i class="nav-icon fas fa-th"></i>
         <p>Category</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('region.index') }}" class="nav-link">
+    <a href="{{ route('countries.index') }}" class="nav-link">
         <i class="nav-icon fas fa-th"></i>
-        <p>Region</p>
+        <p>Country</p>
     </a>
 </li>
 <li class="nav-item">
     <a href="{{ route('locations.index') }}" class="nav-link">
         <i class="nav-icon fas fa-th"></i>
         <p>Location</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ route('region.index') }}" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>Region</p>
     </a>
 </li>
  {{-- <li class="nav-item">
