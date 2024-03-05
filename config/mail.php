@@ -37,13 +37,11 @@ return [
         'smtp' => [
 
             'transport' => 'smtp',
-            'host' => 'smtp.gmail.com',
-            'port' => 587,
-            'encryption' => 'tls',
-            'username' => 'solapurmathanusha@gmail.com',
-            'password' => 'fpfargjryfyphbrb',
-            'timeout' => null,
-            'auth_mode' => null,
+            'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
+            'port' => env('MAIL_PORT', 2525),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
         ],
 
         'ses' => [

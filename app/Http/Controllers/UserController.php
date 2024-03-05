@@ -75,21 +75,21 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
 
-            $user->update($request->all());
-            $is_active = $request->is_active == "on" ? 1 : 0;
-            $user->is_active = $is_active;
-            $user->save();
-            DB::table('model_has_roles')->where('model_id', $user->id)->delete();
-            $user->assignRole($request->input('roles'));
-            return redirect()->route('user.index')
-                ->with('success', 'User updated successfully');
-        }
+        $user->update($request->all());
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        $user->is_active = $is_active;
+        $user->save();
+        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+        $user->assignRole($request->input('roles'));
+        return redirect()->route('user.index')
+            ->with('success', 'User updated successfully');
+    }
 
-        // $user->update($request->all());
-        // DB::table('model_has_roles')->where('model_id', $user->id)->delete();
-        // $user->assignRole($request->input('roles'));
-        // return redirect()->route('user.index')
-        //     ->with('success', 'User updated successfully');
+    // $user->update($request->all());
+    // DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+    // $user->assignRole($request->input('roles'));
+    // return redirect()->route('user.index')
+    //     ->with('success', 'User updated successfully');
     // }
 
     /**
@@ -103,8 +103,10 @@ class UserController extends Controller
     }
     public function Reset(Request $request)
     {
+
         $data = User::find($request->id);
-        Mail::to($data->email, $data->name)->send(new ResetPassword($data));
+        $message = (new ResetPassword($data))->onQueue('emails');
+        Mail::to($data->email)->later(now()->addSeconds(1), $message);
         return redirect()->route('user.index')
             ->with('success', 'Password sent successfully to your mail');
     }

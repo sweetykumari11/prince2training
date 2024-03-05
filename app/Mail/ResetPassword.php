@@ -24,11 +24,11 @@ class ResetPassword extends Mailable
     public function build()
     {
         return $this
-            ->from('solapurmathanusha@gmail.com', 'sweety gupta')
+            ->from('sweety.kumari@theknowledgeacademy.com', 'sweety gupta')
             ->subject('Reset Password Prince2training')
-            //->view('emails.test')
             ->with('data', $this->data);
     }
+
     /**
      * Get the message envelope.
      */
