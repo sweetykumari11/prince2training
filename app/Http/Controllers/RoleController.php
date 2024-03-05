@@ -20,53 +20,53 @@ class RoleController extends Controller
     {
         $totalUserCount = Role::all()->flatMap->users->count(); // Calculate total user count across all roles
 
-    if ($request->ajax()) {
-        $query = Role::query();
+        if ($request->ajax()) {
+            $query = Role::query();
 
-        return Datatables::eloquent($query)
-            ->addColumn('user_counts', function ($role) {
-                $userCounts = $role->users->count();
+            return Datatables::eloquent($query)
+                ->addColumn('user_counts', function ($role) {
+                    $userCounts = $role->users->count();
 
-                // Format user counts as a string for display
-                return $userCounts;
-            })
-            ->make(true);
-    }
+                    // Format user counts as a string for display
+                    return $userCounts;
+                })
+                ->make(true);
+        }
         // if ($request->ajax()) {
         //     $query = Role::query();
         //     return Datatables::eloquent($query)->make(true);
         // }
         return view('role.index');
-        }
+    }
 
-        // if ($request->ajax()) {
-        //     // $query = Role::query();
-        //     // $roleCounts = $query->groupBy('name')->map->count();
-        //     // return Datatables::eloquent($query)->make(true);
-        //     $query = Role::query();
-        //     $roles = $query->get(); // Fetch all roles
+    // if ($request->ajax()) {
+    //     // $query = Role::query();
+    //     // $roleCounts = $query->groupBy('name')->map->count();
+    //     // return Datatables::eloquent($query)->make(true);
+    //     $query = Role::query();
+    //     $roles = $query->get(); // Fetch all roles
 
-        //     // Group roles by name and count each group
-        //     $roleCounts = $roles->groupBy('name')->map->count();
+    //     // Group roles by name and count each group
+    //     $roleCounts = $roles->groupBy('name')->map->count();
 
-        //     return Datatables::eloquent($query)
-        //         ->addColumn('role_count', function($role) use ($roleCounts) {
-        //             return $roleCounts[$role->name] ?? 0;
-        //         })
-        //         ->toJson();
-        // }
+    //     return Datatables::eloquent($query)
+    //         ->addColumn('role_count', function($role) use ($roleCounts) {
+    //             return $roleCounts[$role->name] ?? 0;
+    //         })
+    //         ->toJson();
+    // }
 
-        // $roles = Role::all();
-        //$roleCounts = $roles->groupBy('name')->map->count();
+    // $roles = Role::all();
+    //$roleCounts = $roles->groupBy('name')->map->count();
 
-        // return view('role.index');
+    // return view('role.index');
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('role.create');
     }
 
     /**
