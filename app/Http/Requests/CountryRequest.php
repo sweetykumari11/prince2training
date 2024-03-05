@@ -23,7 +23,7 @@ class CountryRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:countries|string',
-            'countrycode' => 'required|unique:countries',
+            'countrycode' => 'required|unique:countries,country_code',
             'description' => 'required|string',
             'iso3' => 'required|string',
             'currency' => 'required|string',
