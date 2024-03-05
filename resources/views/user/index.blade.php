@@ -85,6 +85,7 @@
                                                     {
                                                         data: 'roles',
                                                         name: 'roles',
+                                                        searchable: false,
                                                         render: function(data, type, full, meta) {
                                                             return data.map(role => role.name).join(', ');
                                                         }
