@@ -36,7 +36,7 @@ Route::get('/password/reset/{id}', [UserController::class, 'Reset'])->name('pass
 Route::get('/reset-password/{id}', [UserController::class, 'showResetForm'])->name('reset.password');
 Route::post('/change-password', [UserController::class, 'changepassword'])->name('password.change');
 
-Route::group(['middleware' => ['auth:web'] ], function () { 
+Route::group(['middleware' => ['auth:web']], function () {
 
     Route::get('dashboard',     [HomeController::class, 'index'])->name('dashboard.index');
     Route::resource('user',            UserController::class);
@@ -55,14 +55,5 @@ Route::group(['middleware' => ['auth:web'] ], function () {
     Route::get('changecountryStatus',        [CountryController::class, 'countryStatus']);
     Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
     Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
-
+    Route::get('changecategoryStatus',    [CategoryController::class, 'categoryStatus']);
 });
-
-
-
-
-
-
-
-
-

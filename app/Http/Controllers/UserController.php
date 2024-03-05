@@ -23,13 +23,31 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
+
     {
 
         if ($request->ajax()) {
             $query = User::with('creator', 'roles');
+            // Filter by status
+            if ($request->has('status')) {
+                $status = $request->input('status');
+                if ($status == 'active') {
+                    $query->where('is_active', true);
+                } elseif ($status == 'inactive') {
+                    $query->where('is_active', false);
+                }
+            }
+            if ($request->has('role_name')) {
+                $roleName = $request->input('role_name');
+                $query->whereHas('roles', function ($q) use ($roleName) {
+                    $q->where('name', $roleName);
+                });
+            }
+
             return Datatables::eloquent($query)->make(true);
         }
-        return view('user.index');
+        $roles = Role::all(); // Retrieve all roles from the database
+        return view('user.index', compact('roles'));
     }
     /**
      * Show the form for creating a new resource.

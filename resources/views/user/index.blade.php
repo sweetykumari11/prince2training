@@ -25,11 +25,26 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">User list</h3>
-                                <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
-                                        href="{{ route('user.create') }}"> Create New User</a>
+                                <div class="float-right">
+                                    <a class="btn btn-block btn-sm btn-success" href="{{ route('user.create') }}"> Create
+                                        New User</a>
+                                </div>
+                                <div class="float-right mr-3">
+                                    <select id="statusFilter" class="form-control">
+                                        <option value="all">All</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="float-right mr-3">
+                                    <select id="roleFilter" class="form-control">
+                                        <option value="">All Roles</option>
+                                        @foreach ($roles as $role)
+                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -49,10 +64,16 @@
                                 @push('child-scripts')
                                     <script>
                                         $(function() {
-                                            $('#table').DataTable({
+                                            var table = $('#table').DataTable({
                                                 processing: true,
                                                 serverSide: true,
-                                                ajax: '{{ route('user.index') }}',
+                                                ajax: {
+                                                    url: '{{ route('user.index') }}',
+                                                    data: function(d) {
+                                                        d.status = $('#statusFilter').val();
+                                                        d.role_name = $('#roleFilter').val();
+                                                    }
+                                                },
                                                 columns: [{
                                                         data: 'name',
                                                         name: 'name'
@@ -81,7 +102,6 @@
                                                             }
                                                         }
                                                     },
-
                                                     {
                                                         data: 'password',
                                                         name: 'password',
@@ -102,6 +122,23 @@
                                                         }
                                                     },
                                                 ]
+                                            });
+
+                                            $('#statusFilter, #roleFilter').on('change', function() {
+                                                var status = $('#statusFilter').val();
+                                                var roleName = $('#roleFilter').val();
+                                                var url = '{{ route('user.index') }}';
+
+                                                // Append status to URL
+                                                url += '?status=' + status;
+
+                                                // Append role name to URL if it's not empty
+                                                if (roleName) {
+                                                    url += '&role_name=' + roleName;
+                                                }
+
+                                                // Reload the DataTable with the new filters
+                                                table.ajax.url(url).load();
                                             });
                                         });
                                     </script>
