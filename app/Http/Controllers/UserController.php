@@ -39,9 +39,11 @@ class UserController extends Controller
             }
             if ($request->has('role_name')) {
                 $roleName = $request->input('role_name');
-                $query->whereHas('roles', function ($q) use ($roleName) {
-                    $q->where('name', $roleName);
-                });
+                if (isset($roleName)) {
+                    $query->whereHas('roles', function ($q) use ($roleName) {
+                        $q->where('name', $roleName);
+                    });
+                }
             }
 
             return Datatables::eloquent($query)->make(true);
