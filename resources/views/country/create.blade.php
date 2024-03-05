@@ -138,12 +138,11 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch2"
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1"
                                             name="is_popular" />
-                                        <label class="custom-control-label" for="customSwitch2">Popular</label>
+                                        <label class="custom-control-label" for="customSwitch1">Popular</label>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="customSwitch2"
