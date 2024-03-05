@@ -97,6 +97,8 @@ class UserController extends Controller
         $is_active = $request->is_active == "on" ? 1 : 0;
         $user->is_active = $is_active;
         $user->save();
+        $selectedPermissions = $request->input('roles', []);
+        $user->roles()->sync($selectedPermissions);
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
         $user->assignRole($request->input('roles'));
         return redirect()->route('user.index')

@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
                 'email',
                 Rule::unique('users')->ignore($this->route('user'))
             ],
-            'roles' =>'required',
+           // 'roles' =>'required',
         ];
     }
 }
