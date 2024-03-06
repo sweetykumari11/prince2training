@@ -78,9 +78,9 @@
                                                     },
                                                     {
                                                         data: 'creator_name',
-                                                        name: 'creator_name',
-                                                        //orderable:false
+                                                        name: 'creator_name'
                                                     },
+
                                                     {
                                                         data: 'created_at',
                                                         name: 'created_at',
