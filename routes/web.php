@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TopicController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\CountryController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\BlogDetailController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\LogActivityController;
 use App\Http\Controllers\PageContentController;
+use App\Http\Controllers\TopicDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +55,11 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::resource('region', RegionController::class);
     Route::resource('locations', LocationsController::class);
     Route::resource('blogs.blogDetail',         BlogDetailController::class);
+    Route::resource('topic',            TopicController::class);
+    Route::resource('topic.faqs',               FaqController::class);
+    Route::resource('topic.topicdetails',       TopicDetailController::class);
+
+
     Route::get('changeblogStatus',        [BlogController::class, 'blogStatus']);
     Route::get('changecountryStatus',        [CountryController::class, 'countryStatus']);
     Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
@@ -60,5 +68,9 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::post('rolesupdate',       [UserController::class, 'rolesupdate'])->name('user.rolesupdate');
     Route::get('actvities', [LogActivityController::class, 'index'])->name('actvities.index');
 
+    Route::get('changefaqStatus',         [FaqController::class, 'faqStatus']);
+    Route::get('changetopicStatus',       [TopicController::class, 'updateStatus']);
+    Route::get('country-topics',        [TopicController::class, 'storeTopicCountry']);
+    Route::get('topicsetpopular',       [TopicController::class, 'setPopular']);
 
 });

@@ -23,24 +23,24 @@ class TopicController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $query = Topic::with('creator', 'category');
-            return Datatables::eloquent($query)->make(true);
-        }
-        return view('topic.list');
-
         // if ($request->ajax()) {
-        //     $query = Topic::with([
-        //         'creator',
-        //         'category',
-        //         'countries' => function ($query) {
-        //             $query->select('countries.*', 'country_topics.deleted_at as pivot_deleted_at', 'country_topics.is_popular as pivot_is_popular')
-        //                 ->where('country_id', session('country')->id);
-        //         },
-        //     ]);
+        //     $query = Topic::with('creator', 'category');
         //     return Datatables::eloquent($query)->make(true);
         // }
         // return view('topic.list');
+
+        if ($request->ajax()) {
+            $query = Topic::with([
+                'creator',
+                'category',
+                'countries' => function ($query) {
+                    $query->select('countries.*', 'country_topics.deleted_at as pivot_deleted_at', 'country_topics.is_popular as pivot_is_popular');
+                        //->where('country_id', session('country')->id);
+                },
+            ]);
+            return Datatables::eloquent($query)->make(true);
+        }
+        return view('topic.list');
     }
 
     /**
