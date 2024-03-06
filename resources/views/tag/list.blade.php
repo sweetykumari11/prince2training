@@ -77,9 +77,17 @@
                                                         }
                                                     },
                                                     {
-                                                        data: 'creator.name',
-                                                        name: 'creator.name'
+                                                        data: 'creator',
+                                                        name: 'creator.name',
+                                                        render: function(data, type, full, meta) {
+                                                            if (data && data.name) {
+                                                                return data.name;
+                                                            } else {
+                                                                return '';
+                                                            }
+                                                        }
                                                     },
+
                                                     {
                                                         data: 'created_at',
                                                         name: 'created_at',
