@@ -87,12 +87,12 @@
                                                         data: 'is_active',
                                                         name: 'is_active',
                                                         render: function(data, type, full, meta) {
-                                                            if (data === 1) {
-                                                                return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="' +
-                                                                    0 + '" data-val="' + full.id + '"></i>';
+                                                            if (data) {
+                                                                return '<i class="fa fa-check-circle text-success is_active" data-activestatus="1" data-val="' +
+                                                                    full.id + '"></i>';
                                                             } else {
-                                                                return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="' +
-                                                                    1 + '" data-val="' + full.id + '"></i>';
+                                                                return '<i class="fa fa-times-circle text-danger is_active" data-activestatus="0" data-val="' +
+                                                                    full.id + '"></i>';
                                                             }
                                                         }
                                                     },
@@ -113,18 +113,15 @@
                                                         }
                                                     },
                                                     {
-                                                        data: 'popular',
-                                                        name: 'popular',
+                                                        data: 'is_popular',
+                                                        name: 'is_popular',
                                                         render: function(data, type, full, meta) {
-                                                            var ispopular = full.countries.some(function(country) {
-                                                                return country.pivot.is_popular;
-                                                            });
-                                                            if (ispopular == 1) {
-                                                                return '<i class="fas fa-toggle-on text-primary is_popular" data-popularstatus="' +
-                                                                    0 + '" data-val="' + full.id + '"></i>';
+                                                            if (data) {
+                                                                return '<i class="fa fa-check-circle text-success is_popular" data-popularstatus="1" data-val="' +
+                                                                    full.id + '"></i>';
                                                             } else {
-                                                                return '<i class="fas fa-toggle-on text-secondary is_popular" data-popularstatus="' +
-                                                                    1 + '" data-val="' + full.id + '"></i>';
+                                                                return '<i class="fa fa-times-circle text-danger is_popular" data-popularstatus="0" data-val="' +
+                                                                    full.id + '"></i>';
                                                             }
                                                         }
                                                     },
@@ -174,17 +171,17 @@
                                                             var action = '<a href="' + editUrl + '" class="fas fa-edit"></a>';
 
                                                             // if (@json($isAdmin)) {
-                                                                action += '<a href="#" class="delete-link" ' +
-                                                                    '   onclick="event.preventDefault(); document.getElementById(\'' +
-                                                                    deleteFormId + '\').submit();">' +
-                                                                    '   <i class="fas fa-trash text-danger"></i>' +
-                                                                    '</a>' +
-                                                                    '<form id="' + deleteFormId + '" ' +
-                                                                    '   action="' + deleteUrl +
-                                                                    '" method="POST" style="display: none;">' +
-                                                                    '   @csrf' +
-                                                                    '   @method('DELETE')' +
-                                                                    '</form>';
+                                                            action += '<a href="#" class="delete-link" ' +
+                                                                '   onclick="event.preventDefault(); document.getElementById(\'' +
+                                                                deleteFormId + '\').submit();">' +
+                                                                '   <i class="fas fa-trash text-danger"></i>' +
+                                                                '</a>' +
+                                                                '<form id="' + deleteFormId + '" ' +
+                                                                '   action="' + deleteUrl +
+                                                                '" method="POST" style="display: none;">' +
+                                                                '   @csrf' +
+                                                                '   @method('DELETE')' +
+                                                                '</form>';
                                                             //}
                                                             return action;
                                                         }
@@ -216,7 +213,7 @@
                 var url = '/changeblogStatus';
                 handleStatusToggle($toggle, activestatus, dataVal, url);
             });
-             $('#table').on('click', '.is_popular', function() {
+            $('#table').on('click', '.is_popular', function() {
                 var popularstatus = $(this).data('popularstatus');
                 var dataVal = $(this).data('val');
                 var $toggle = $(this);

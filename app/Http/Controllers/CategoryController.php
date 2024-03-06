@@ -62,6 +62,8 @@ class CategoryController extends Controller
         $is_popular = $request->is_popular == "on" ? 1 : 0;
         $is_technical = $request->is_technical == "on" ? 1 : 0;
 
+        $content_without_tags = strip_tags(html_entity_decode($request->content));
+
         $category = Category::create([
             'name' => $request->name,
             'icon' => $icon_location . $icon_name,
@@ -70,20 +72,15 @@ class CategoryController extends Controller
             'is_popular' => $is_popular,
             'is_technical' => $is_technical,
             'created_by' => Auth::user()->id,
-            'content' => $request->content
+            'content' => $content_without_tags,
         ]);
 
         $category->slugs()->create([
             'slug' => $request->slug,
         ]);
-        //$category->countries()->attach($request->input('country', []));
-
-
-        // $message = (new CategoryCreatedMail($category))->onQueue('emails');
-        // Mail::to('arshdeep.singh@theknowledgeacademy.com')->later(now()->addSeconds(1), $message);
-
         session()->flash('success', 'Category Created successfully.');
         return redirect()->route('category.index');
+
     }
     /**
      * Display the specified resource.
@@ -144,6 +141,9 @@ class CategoryController extends Controller
         $is_popular = $request->is_popular == "on" ? 1 : 0;
         $is_technical = $request->is_technical == "on" ? 1 : 0;
 
+
+        $content_without_tags = strip_tags($request->content);
+
         $category->update([
             'name' => $request->name,
             'icon' => $category->icon,
@@ -151,7 +151,7 @@ class CategoryController extends Controller
             'is_active' => $is_active,
             'is_popular' => $is_popular,
             'is_technical' => $is_technical,
-            'content' => $request->content
+            'content' => $content_without_tags,
         ]);
 
         $category->slugs()->update(['slug' => $request->slug]);

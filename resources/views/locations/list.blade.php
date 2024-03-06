@@ -61,9 +61,11 @@
                                                         name: 'is_popular',
                                                         render: function(data, type, full, meta) {
                                                             if (data) {
-                                                                return '<i class="fas fa-toggle-on text-primary"></i>';
+                                                                return '<i class="fa fa-check-circle text-success is_popular" data-popularstatus="1" data-val="' +
+                                                                    full.id + '"></i>';
                                                             } else {
-                                                                return '<i class="fas fa-toggle-on text-secondary"></i>';
+                                                                return '<i class="fa fa-times-circle text-danger is_popular" data-popularstatus="0" data-val="' +
+                                                                    full.id + '"></i>';
                                                             }
                                                         }
                                                     },

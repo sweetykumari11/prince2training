@@ -47,7 +47,7 @@
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Icon</th>
                                                     <th scope="col">Logo</th>
-                                                    <th scope="col">Content</th>
+                                                    {{-- <th scope="col">Content</th> --}}
                                                     <th scope="col">Active</th>
                                                     <th scope="col">Popular</th>
                                                     <th scope="col">Technical</th>
@@ -90,19 +90,21 @@
                                                             return '<i class="fas fa-times text-secondary"></i>';
                                                         }
                                                     }
-                                                },{
-                                                    data: 'content',
-                                                    name: 'content',
-                                                }, {
+                                                },
+                                                // {
+                                                //     data: 'content',
+                                                //     name: 'content',
+                                                // },
+                                                {
                                                     data: 'is_active',
                                                     name: 'is_active',
                                                     render: function(data, type, full, meta) {
                                                         if (data) {
-                                                            return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="' +
-                                                                0 + '" data-val="' + full.id + '"></i>';
+                                                            return '<i class="fa fa-check-circle text-success is_active" data-activestatus="1" data-val="' +
+                                                                full.id + '"></i>';
                                                         } else {
-                                                            return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="' +
-                                                                1 + '" data-val="' + full.id + '"></i>';
+                                                            return '<i class="fa fa-times-circle text-danger is_active" data-activestatus="0" data-val="' +
+                                                                full.id + '"></i>';
                                                         }
                                                     }
                                                 },
@@ -111,22 +113,29 @@
                                                     name: 'is_popular',
                                                     render: function(data, type, full, meta) {
                                                         if (data) {
-                                                            return '<i class="fas fa-toggle-on text-primary"></i>';
+                                                            return '<i class="fa fa-check-circle text-success is_popular" data-popularstatus="1" data-val="' +
+                                                                full.id + '"></i>';
                                                         } else {
-                                                            return '<i class="fas fa-toggle-on text-secondary"></i>';
+                                                            return '<i class="fa fa-times-circle text-danger is_popular" data-popularstatus="0" data-val="' +
+                                                                full.id + '"></i>';
                                                         }
                                                     }
-                                                }, {
+                                                },
+
+                                                {
                                                     data: 'is_technical',
                                                     name: 'is_technical',
                                                     render: function(data, type, full, meta) {
                                                         if (data) {
-                                                            return '<i class="fas fa-toggle-on text-primary"></i>';
+                                                            return '<i class="fa fa-check-circle text-success is_technical" data-technicalstatus="1" data-val="' +
+                                                                full.id + '"></i>';
                                                         } else {
-                                                            return '<i class="fas fa-toggle-on text-secondary"></i>';
+                                                            return '<i class="fa fa-times-circle text-danger is_technical" data-technicalstatus="0" data-val="' +
+                                                                full.id + '"></i>';
                                                         }
                                                     }
                                                 },
+
 
                                                 // {
                                                 //     data: 'country',

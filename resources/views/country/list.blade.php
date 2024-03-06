@@ -71,11 +71,11 @@
                                                         name: 'is_active',
                                                         render: function(data, type, full, meta) {
                                                             if (data) {
-                                                                return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="' +
-                                                                    0 + '" data-val="' + full.id + '"></i>';
+                                                                return '<i class="fa fa-check-circle text-success is_active" data-activestatus="1" data-val="' +
+                                                                    full.id + '"></i>';
                                                             } else {
-                                                                return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="' +
-                                                                    1 + '" data-val="' + full.id + '"></i>';
+                                                                return '<i class="fa fa-times-circle text-danger is_active" data-activestatus="0" data-val="' +
+                                                                    full.id + '"></i>';
                                                             }
                                                         }
                                                     },
@@ -85,7 +85,8 @@
                                                         orderable: false,
                                                         searchable: false,
                                                         render: function(data, type, full, meta) {
-                                                            var editUrl = '{{ route('countries.edit', ':id') }}'.replace(':id', data);
+                                                            var editUrl = '{{ route('countries.edit', ':id') }}'.replace(':id',
+                                                                data);
                                                             var deleteFormId = 'delete-form-' + data;
                                                             var deleteUrl = '{{ route('countries.destroy', ':id') }}'.replace(':id',
                                                                 data);
@@ -93,17 +94,17 @@
                                                             var action = '<a href="' + editUrl + '" class="fas fa-edit"></a>';
 
 
-                                                                action += '<a href="#" class="delete-link" ' +
-                                                                    '   onclick="event.preventDefault(); document.getElementById(\'' +
-                                                                    deleteFormId + '\').submit();">' +
-                                                                    '   <i class="fas fa-trash text-danger"></i>' +
-                                                                    '</a>' +
-                                                                    '<form id="' + deleteFormId + '" ' +
-                                                                    '   action="' + deleteUrl +
-                                                                    '" method="POST" style="display: none;">' +
-                                                                    '   @csrf' +
-                                                                    '   @method('DELETE')' +
-                                                                    '</form>';
+                                                            action += '<a href="#" class="delete-link" ' +
+                                                                '   onclick="event.preventDefault(); document.getElementById(\'' +
+                                                                deleteFormId + '\').submit();">' +
+                                                                '   <i class="fas fa-trash text-danger"></i>' +
+                                                                '</a>' +
+                                                                '<form id="' + deleteFormId + '" ' +
+                                                                '   action="' + deleteUrl +
+                                                                '" method="POST" style="display: none;">' +
+                                                                '   @csrf' +
+                                                                '   @method('DELETE')' +
+                                                                '</form>';
 
                                                             return action;
                                                         }
