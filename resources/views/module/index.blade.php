@@ -68,7 +68,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Module list</h3>
+                                <h3 class="card-title">Module List</h3>
                                 <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
                                     href="{{ route('module.create') }}"> Create New module</a>
                             </div>

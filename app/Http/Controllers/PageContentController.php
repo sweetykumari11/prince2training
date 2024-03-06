@@ -61,7 +61,7 @@ class PageContentController extends Controller
             'heading_subcontent4' => $request->headingsubcontent4,
             'created_by' => Auth::user()->id
         ]);
-        session()->flash('success', 'pagedetail Created successfully.');
+        session()->flash('success', 'Page Content Created Successfully.');
         return redirect()->route('pagecontent.index');
     }
     public function edit(PageContent $pagecontent)
@@ -106,13 +106,13 @@ class PageContentController extends Controller
             'heading_subcontent4' => $request->headingsubcontent4,
             'created_by' => Auth::user()->id
         ]);
-        session()->flash('success', 'pagecontent updated successfully.');
+        session()->flash('success', 'Page Content updated Successfully.');
         return redirect()->route('pagecontent.index');
     }
     public function destroy(PageContent $pagecontent)
     {
         $pagecontent->delete();
-        session()->flash('danger', 'pagedetail Deleted successfully.');
+        session()->flash('danger', 'Page Content Deleted Successfully.');
         return redirect()->route('pagecontent.index');
     }
 }

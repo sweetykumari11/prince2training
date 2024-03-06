@@ -46,7 +46,7 @@
                                         <label>Country<span class="text-danger">*</span></label>
                                         <select id="country_id" name="country_id"
                                             class="form-control select2bs4 @error('country_id') is-invalid @enderror">
-                                            <option value="">Select a Country</option>
+                                            <option value="">--Select a Country--</option>
                                             @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach

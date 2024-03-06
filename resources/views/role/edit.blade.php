@@ -36,7 +36,7 @@
                                         <label for="name">Name<span class="text-danger">*</span></label>
                                         <input type="text" name="name" id="name"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            value="{{ old('name', $role->name) }}">
+                                            value="{{ old('name', $role->name) }}" placeholder="Enter Name">
                                         @error('name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label for="description">Description<span class="text-danger">*</span></label>
                                         <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                                            rows="4">{{ old('description', $role->description) }}</textarea>
+                                            rows="4" placeholder="Enter Description">{{ old('description', $role->description) }}</textarea>
                                         @error('description')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

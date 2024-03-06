@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Category</a></li>
-                            <li class="breadcrumb-item active">Create category</li>
+                            <li class="breadcrumb-item active">Create Category</li>
                         </ol>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Create category</h3>
+                                <h3 class="card-title">Create Category</h3>
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
@@ -69,7 +69,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputFile">logo<span class="text-danger">*</label>
+                                        <label for="exampleInputFile">Logo<span class="text-danger">*</label>
                                         <div class="input-group">
                                             <input type="file" class="form-control @error('logo') is-invalid @enderror"
                                                 id="logo" name="logo">
@@ -81,7 +81,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Content<span class="text-danger">*</span></label>
+                                        <label>Content</label>
                                         <textarea id="summernote" class="summernote @error('content') is-invalid @enderror" name="content">{{ old('content') }}</textarea>
                                         @error('content')
                                             <span class="error invalid-feedback" role="alert">

@@ -23,7 +23,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit user</h3>
+                                <h3 class="card-title">Edit User</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email <span class="text-danger">*</label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                            id="exampleInputEmail1" value="{{ $user->email }}" placeholder="Enter email"
+                                            id="exampleInputEmail1" value="{{ $user->email }}" placeholder="Enter Email"
                                             name="email">
                                         @error('email')
                                             <span class="error invalid-feedback" role="alert">

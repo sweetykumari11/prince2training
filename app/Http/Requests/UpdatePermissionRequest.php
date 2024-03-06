@@ -26,4 +26,11 @@ class UpdatePermissionRequest extends FormRequest
             'access' =>'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'module_id.required' => ' The module field is required. '
+        ];
+    }
 }

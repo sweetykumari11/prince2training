@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -24,47 +23,8 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Activity</h3>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="timeline">
-
-                                @foreach ($category->logActivities as $activity)
-                                    <div class="time-label">
-                                        <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
-                                    </div>
-
-                                    <div>
-                                        <i class="fas fa-solid fa-pen bg-blue"></i>
-                                        <div class="timeline-item">
-                                            <div class="card-header">
-                                                <h3 class="card-title">
-                                                    @if ($activity->created_by)
-                                                        {{ $activity->creator->name }}
-                                                    @else
-                                                        System
-                                                    @endif
-                                                </h3>
-                                            </div>
-                                            <h3 class="timeline-header no-border"> {{ $activity->activity }} </a></h3>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <div>
-                                    <i class="fas fa-clock bg-gray"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
                             <h3 class="card-title">Edit Category</h3>
                         </div>
-
                         <div class="card-body">
                             <form method="POST" action="{{ route('category.update', $category->id) }}"
                                 enctype="multipart/form-data">
@@ -132,8 +92,8 @@
                                                 <i class="fas fa-trash text-danger" id="removelogo"
                                                     onClick="removeLogo()"></i>
                                                 <input type="hidden"id="removelogotxt" name="removelogotxt" value>
-                                                <i class="fas fa-undo text-danger" id="undoremocelogo"
-                                                    onClick="undoLogo()" style="display: none";></i>
+                                                <i class="fas fa-undo text-danger" id="undoremocelogo" onClick="undoLogo()"
+                                                    style="display: none";></i>
                                             </div>
                                         @endif
                                         @error('logo')
@@ -144,8 +104,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Content<span class="text-danger">*</span></label>
-                                    <textarea id="summernote" class="summernote @error('content') is-invalid @enderror" name="content">{{$category->content}}</textarea>
+                                    <label>Content</label>
+                                    <textarea id="summernote" class="summernote @error('content') is-invalid @enderror" name="content">{{ $category->content }}</textarea>
                                     @error('content')
                                         <span class="error invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -187,46 +147,86 @@
                         </div>
                     </div>
                 </div>
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Activity</h3>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="timeline">
+
+                                            @foreach ($category->logActivities as $activity)
+                                                <div class="time-label">
+                                                    <span
+                                                        class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
+                                                </div>
+
+                                                <div>
+                                                    <i class="fas fa-solid fa-pen bg-blue"></i>
+                                                    <div class="timeline-item">
+                                                        <div class="card-header">
+                                                            <h3 class="card-title">
+                                                                @if ($activity->created_by)
+                                                                    {{ $activity->creator->name }}
+                                                                @else
+                                                                    System
+                                                                @endif
+                                                            </h3>
+                                                        </div>
+                                                        <h3 class="timeline-header no-border"> {{ $activity->activity }}
+                                                            </a></h3>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
             </div>
-    </section>
-    </div>
-@endsection
+        @endsection
 
-@push('child-scripts')
-    <script>
-        $(document).ready(function() {
-            var t = $('#summernote').summernote({
-                height: 300,
-                focus: true
-            });
-        });
+        @push('child-scripts')
+            <script>
+                $(document).ready(function() {
+                    var t = $('#summernote').summernote({
+                        height: 300,
+                        focus: true
+                    });
+                });
 
-        function removeIcon() {
-            $('#removeicontxt').val('removed');
-            $('#cIcon').attr('src', '{{ asset('Images/icon/no-image.png') }}');
-            $('#removeicon').hide();
-            $('#undoremoceicon').show();
-        }
+                function removeIcon() {
+                    $('#removeicontxt').val('removed');
+                    $('#cIcon').attr('src', '{{ asset('Images/icon/no-image.png') }}');
+                    $('#removeicon').hide();
+                    $('#undoremoceicon').show();
+                }
 
-        function undoIcon() {
-            $('#removeicontxt').val(null);
-            $('#cIcon').attr('src', '{{ asset($category->icon) }}');
-            $('#removeicon').show();
-            $('#undoremoceicon').hide();
-        }
+                function undoIcon() {
+                    $('#removeicontxt').val(null);
+                    $('#cIcon').attr('src', '{{ asset($category->icon) }}');
+                    $('#removeicon').show();
+                    $('#undoremoceicon').hide();
+                }
 
-        function removeLogo() {
-            $('#removelogotxt').val('removed');
-            $('#cLogo').attr('src', '{{ asset('Images/icon/no-image.png') }}');
-            $('#removelogo').hide();
-            $('#undoremocelogo').show();
-        }
+                function removeLogo() {
+                    $('#removelogotxt').val('removed');
+                    $('#cLogo').attr('src', '{{ asset('Images/icon/no-image.png') }}');
+                    $('#removelogo').hide();
+                    $('#undoremocelogo').show();
+                }
 
-        function undoLogo() {
-            $('#removelogotxt').val(null);
-            $('#cLogo').attr('src', '{{ asset($category->logo) }}');
-            $('#removelogo').show();
-            $('#undoremocelogo').hide();
-        }
-    </script>
-@endpush
+                function undoLogo() {
+                    $('#removelogotxt').val(null);
+                    $('#cLogo').attr('src', '{{ asset($category->logo) }}');
+                    $('#removelogo').show();
+                    $('#undoremocelogo').hide();
+                }
+            </script>
+        @endpush
