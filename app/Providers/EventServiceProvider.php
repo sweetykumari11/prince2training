@@ -3,13 +3,19 @@
 namespace App\Providers;
 use App\Models\Tag;
 use App\Models\Blog;
+use App\Models\Region;
 use App\Models\Country;
-use App\Models\BlogDetail;
 
+use App\Models\Category;
+use App\Models\Location;
+use App\Models\BlogDetail;
 use App\Models\PageContent;
 use App\Observers\TagObserver;
 use App\Observers\BlogObserver;
+use App\Observers\RegionObserver;
 use App\Observers\CountryObserver;
+use App\Observers\CategoryObserver;
+use App\Observers\LocationObserver;
 use App\Observers\BlogdetailObserver;
 use Illuminate\Support\Facades\Event;
 use App\Observers\PagecontentObserver;
@@ -41,6 +47,9 @@ class EventServiceProvider extends ServiceProvider
         Tag::observe(TagObserver::class);
         country::observe(CountryObserver::class);
         PageContent::observe(PagecontentObserver::class);
+        Category::observe(CategoryObserver::class);
+        Region::observe(RegionObserver::class);
+        Location::observe(LocationObserver::class);
     }
 
     /**

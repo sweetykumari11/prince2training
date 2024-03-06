@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Models\Region;
 use App\Models\Country;
-use Illuminate\Support\Facades\Auth;
 
 class RegionObserver
 {
@@ -13,7 +12,6 @@ class RegionObserver
      */
     public function created(Region $region): void
     {
-        //$created_by =  ?? NULL;
         $region->logActivities()->create([
             'activity' => 'Region ' . $region->name . ' created',
         ]);
@@ -44,7 +42,7 @@ class RegionObserver
                 $oldCountryName = Country::find($originalValue)->name;
                 $newCountryName = Country::find($currentValue)->name;
                 $region->logActivities()->create([
-                    'activity' => "Region Country updated from {$oldCountryName} to {$newCountryName}",
+                    'activity' => "Location Country updated from {$oldCountryName} to {$newCountryName}",
                 ]);
             }
         }

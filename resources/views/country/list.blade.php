@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1>Blogs</h1>
+                        <h1>Country</h1>
                     </div>
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
@@ -21,7 +21,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Blog</h3>
+                                <h3 class="card-title">Country</h3>
                                 <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
                                         href="{{ route('countries.create') }}">
                                         Create new country</a>

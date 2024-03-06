@@ -19,48 +19,8 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        @if ($errors->any())
-            {{ implode('', $errors->all('<div>:message</div>')) }}
-        @endif
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Activity</h3>
-                        </div>
-                        <div class="card-body">
-                            <!-- The time line -->
-                            <div class="timeline">
-                                <!-- timeline time label -->
-                                @foreach ($location->logActivities as $activity)
-                                    <div class="time-label">
-                                        <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
-                                    </div>
-
-                                    <div>
-                                        <i class="fas fa-solid fa-pen bg-blue"></i>
-                                        <div class="timeline-item">
-                                            <div class="card-header">
-                                                <h3 class="card-title">
-                                                    @if ($activity->created_by)
-                                                        {{ $activity->creator->name }}
-                                                    @else
-                                                        System
-                                                    @endif
-                                                </h3>
-                                            </div>
-                                            <h3 class="timeline-header no-border"> {{ $activity->activity }} </a></h3>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <div>
-                                    <i class="fas fa-clock bg-gray"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
@@ -166,8 +126,7 @@
                                     <label for="location_image">Image<span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <div class="col-md-6">
-                                            <input type="file"
-                                                class="form-control @error('image') is-invalid @enderror"
+                                            <input type="file" class="form-control @error('image') is-invalid @enderror"
                                                 id="location_image" name="image">
                                         </div>
                                         @if ($location->image)
@@ -264,6 +223,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Activity</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- The time line -->
+                            <div class="timeline">
+                                <!-- timeline time label -->
+                                @foreach ($location->logActivities as $activity)
+                                    <div class="time-label">
+                                        <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
+                                    </div>
+
+                                    <div>
+                                        <i class="fas fa-solid fa-pen bg-blue"></i>
+                                        <div class="timeline-item">
+                                            <div class="card-header">
+                                                <h3 class="card-title">
+                                                    @if ($activity->created_by)
+                                                        {{ $activity->creator->name }}
+                                                    @else
+                                                        System
+                                                    @endif
+                                                </h3>
+                                            </div>
+                                            <h3 class="timeline-header no-border"> {{ $activity->activity }} </a></h3>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <div>
+                                    <i class="fas fa-clock bg-gray"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -322,7 +318,8 @@
 
         function undoLocationImage() {
             $('#removeLocationImageTxt').val('');
-            $('#cLocationImage').attr('src','{{ asset($location->image) }}'); // Assuming $location->image contains the original image path
+            $('#cLocationImage').attr('src',
+                '{{ asset($location->image) }}'); // Assuming $location->image contains the original image path
             $('#removeLocationImage').show();
             $('#undoRemoveLocationImage').hide();
         }

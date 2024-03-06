@@ -24,6 +24,52 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
+                            <h3 class="card-title">Edit Region</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('region.update', $region->id) }}">
+                                @csrf
+                                @method('PUT') <!-- Use the PUT method for updating -->
+
+                                <div class="form-group">
+                                    <label for="name">Name<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        id="name" name="name" value="{{ $region->name }}">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="country_id">Country<span class="text-danger">*</span></label>
+                                    <select id="country_id" name="country_id"
+                                        class="form-control select2bs4 @error('country_id') is-invalid @enderror">
+                                        <option value="">Select a Country</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}"
+                                                {{ $region->country_id == $country->id ? 'selected' : '' }}>
+                                                {{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('country_id')
+                                        <span class="error invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
                             <h3 class="card-title">Activity</h3>
                         </div>
                         <div class="card-body">
@@ -55,53 +101,6 @@
                                     <i class="fas fa-clock bg-gray"></i>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <!-- Main content -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Edit Region</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form method="POST" action="{{ route('region.update', $region->id) }}">
-                                @csrf
-                                @method('PUT') <!-- Use the PUT method for updating -->
-
-                                <div class="form-group">
-                                    <label for="name">Name<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name" value="{{ $region->name }}">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="country_id">Country<span class="text-danger">*</span></label>
-                                    <select id="country_id" name="country_id" class="form-control select2bs4 @error('country_id') is-invalid @enderror">
-                                        <option value="">Select a Country</option>
-                                        @foreach ($countries as $country)
-                                            <option value="{{ $country->id }}"
-                                                {{ $region->country_id == $country->id ? 'selected' : '' }}>
-                                                {{ $country->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('country_id')
-                                        <span class="error invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>

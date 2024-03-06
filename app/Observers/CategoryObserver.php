@@ -38,6 +38,27 @@ class CategoryObserver
                 ]);
             }
 
+            if ($attribute == 'slug' && $originalValue != $currentValue) {
+                $category->logActivities()->create([
+                    'activity' => "Location Slug updated from {$originalValue} to {$currentValue}",
+                ]);
+            }
+            if ($attribute === 'icon' && $originalValue != $currentValue) {
+                $category->logActivities()->create([
+                    'activity' => "Category Icon updated",
+                ]);
+            }
+
+            if ($attribute === 'logo' && $originalValue != $currentValue) {
+                $category->logActivities()->create([
+                    'activity' => "Category Logo updated",
+                ]);
+            }
+            if ($attribute === 'content' && $originalValue != $currentValue) {
+                $category->logActivities()->create([
+                    'activity' => "Category Content updated",
+                ]);
+            }
             if ($attribute === 'is_active') {
                 if ($originalValue == 0 && $currentValue == 1) {
                     $category->logActivities()->create([
