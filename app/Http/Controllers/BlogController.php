@@ -35,13 +35,17 @@ class BlogController extends Controller
         if ($request->ajax()) {
             $query = Blog::with([
                 'creator',
-                'category',
                 'countries' => function ($query) {
                     $query->select('countries.*', 'country_blog.deleted_at as pivot_deleted_at','country_blog.is_popular as pivot_is_popular');
                 },
-            ]);
+            ])->get();
             //->where('country_id', session('country')->id);
-            return Datatables::eloquent($query)->make(true);
+            return Datatables::of($query)
+            ->addIndexColumn()
+            ->addColumn('category_name', function($row){ 
+                return $row->category ? $row->category->name : '';      
+            })
+            ->make(true);
         }
         return view('blog.list');
     }

@@ -61,8 +61,8 @@
                                                         name: 'id'
                                                     },
                                                     {
-                                                        data: 'category.name',
-                                                        name: 'category.name'
+                                                        data: 'category_name',
+                                                        name: 'category_name'
                                                     },
                                                     {
                                                         data: 'title',
