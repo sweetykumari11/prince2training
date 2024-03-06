@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Location;
 use App\Models\BlogDetail;
 use App\Models\PageContent;
+use App\Models\Topicdetail;
 use App\Observers\TagObserver;
 use App\Observers\BlogObserver;
 use App\Observers\TopicObserver;
@@ -21,6 +22,7 @@ use App\Observers\LocationObserver;
 use App\Observers\BlogdetailObserver;
 use Illuminate\Support\Facades\Event;
 use App\Observers\PagecontentObserver;
+use App\Observers\TopicdetailObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -53,6 +55,7 @@ class EventServiceProvider extends ServiceProvider
         Region::observe(RegionObserver::class);
         Location::observe(LocationObserver::class);
         Topic::observe(TopicObserver::class);
+        Topicdetail::observe(TopicdetailObserver::class);
     }
 
     /**
