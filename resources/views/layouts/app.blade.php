@@ -74,14 +74,14 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ asset('image/tka_logo.png') }}"
                             class="user-image img-circle elevation-2" alt="User Image">
-                        <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                        <span class="d-none d-md-inline text-capitalize">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
                         <li class="user-header bg-primary">
                             <img src="{{ asset('image/tka_logo.png') }}"
                                 class="img-circle elevation-2" alt="User Image">
-                            <p>
+                            <p class="text-capitalize">
                                 {{ Auth::user()->name }}
                                 <small>Member since {{ Auth::user()->created_at->format('M. Y') }} </small>
                             </p>
@@ -128,12 +128,10 @@
             <div id="danger-message" class="alert alert-danger" role="alert" style="display: none;"></div>
             @yield('content')
         </div>
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+        <footer class="main-footer float-right">
+            <strong>Copyright &copy; <?php echo date('Y')?> <a href="{{url('/')}}">Prince2 Training</a>.</strong>
             All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
-            </div>
+            
         </footer>
 
         <!-- Control Sidebar -->

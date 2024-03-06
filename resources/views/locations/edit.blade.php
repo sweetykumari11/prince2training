@@ -47,7 +47,7 @@
                                     <label for="region_country">Country<span class="text-danger">*</span></label>
                                     <select id="region_country" name="country_id"
                                         class="form-control select2bs4 @error('country_id') is-invalid @enderror">
-                                        <option value="">Select a Country</option>
+                                        <option value="">--Select a Country--</option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}"
                                                 {{ $location->country_id == $country->id ? 'selected' : '' }}>
@@ -64,7 +64,7 @@
                                     <label for="region">Region<span class="text-danger">*</span></label>
                                     <select id="region" name="region_id"
                                         class="form-control select2bs4 @error('region_id') is-invalid @enderror">
-                                        <option value="">Select a Region</option>
+                                        <option value="">--Select a Region--</option>
                                         @foreach ($regions as $region)
                                             <option value="{{ $region->id }}"
                                                 {{ $location->region_id == $region->id ? 'selected' : '' }}>

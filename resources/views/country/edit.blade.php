@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>country</h1>
+                    <h1>Country</h1>
                 </div>
                 <div class="col-sm-12">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">country</a></li>
-                        <li class="breadcrumb-item active">Edit country</li>
+                        <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">Country</a></li>
+                        <li class="breadcrumb-item active">Edit Country</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Edit country</h3>
+                            <h3 class="card-title">Edit Country</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

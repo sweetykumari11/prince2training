@@ -26,4 +26,11 @@ class RegionUpdateRequest extends FormRequest
             'country_id'=>'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'country_id.required' => ' The country field is required. '
+        ];
+    }
 }

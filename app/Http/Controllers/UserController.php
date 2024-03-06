@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Str;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -23,12 +22,9 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-
     {
-
         if ($request->ajax()) {
             $query = User::with('creator', 'roles');
-            // Filter by status
             if ($request->has('status')) {
                 $status = $request->input('status');
                 if ($status == 'active') {
@@ -45,7 +41,6 @@ class UserController extends Controller
                     });
                 }
             }
-
             return Datatables::eloquent($query)->make(true);
         }
         $roles = Role::all(); // Retrieve all roles from the database
@@ -94,11 +89,16 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-
         $user->update($request->all());
         $is_active = $request->is_active == "on" ? 1 : 0;
         $user->is_active = $is_active;
         $user->save();
+        return redirect()->route('user.index')
+            ->with('success', 'User updated successfully');
+    }
+    public function rolesupdate(Request $request)
+    {
+        $user = User::find($request->user_id);
         $selectedPermissions = $request->input('roles', []);
         $user->roles()->sync($selectedPermissions);
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
@@ -106,14 +106,6 @@ class UserController extends Controller
         return redirect()->route('user.index')
             ->with('success', 'User updated successfully');
     }
-
-    // $user->update($request->all());
-    // DB::table('model_has_roles')->where('model_id', $user->id)->delete();
-    // $user->assignRole($request->input('roles'));
-    // return redirect()->route('user.index')
-    //     ->with('success', 'User updated successfully');
-    // }
-
     /**
      * Remove the specified resource from storage.
      */

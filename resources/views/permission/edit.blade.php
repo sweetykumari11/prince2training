@@ -37,7 +37,7 @@
                                         <label for="category_id">Module Name<span class="text-danger">*</label>
                                         <select class="form-control select2bs4 @error('module_id') is-invalid @enderror"
                                             id="module_id" name="module_id">
-                                            <option value="">Select a Module</option>
+                                            <option value="">--Select a Module--</option>
                                             @foreach ($modules as $module)
                                                 <option value="{{ $module->id }}"
                                                     {{ $permission->module_id == $module->id ? 'selected' : '' }}>
@@ -58,13 +58,13 @@
                                         <label for="category_id">Access<span class="text-danger">*</label>
                                         <select class="form-control select2bs4 @error('access') is-invalid @enderror"
                                             id="access" name="access">
-                                            <option value="insert" {{ $selectedValue === 'insert' ? 'selected' : '' }}>
-                                                insert</option>
-                                            <option value="update" {{ $selectedValue === 'update' ? 'selected' : '' }}>
-                                                update</option>
-                                            <option value="delete" {{ $selectedValue === 'delete' ? 'selected' : '' }}>
-                                                delete</option>
-                                            <option value="list" {{ $selectedValue === 'list' ? 'selected' : '' }}>view
+                                            <option value="Insert" {{ $selectedValue === 'insert' ? 'selected' : '' }}>
+                                                Insert</option>
+                                            <option value="Update" {{ $selectedValue === 'update' ? 'selected' : '' }}>
+                                            Update</option>
+                                            <option value="Delete" {{ $selectedValue === 'delete' ? 'selected' : '' }}>
+                                            Delete</option>
+                                            <option value="List" {{ $selectedValue === 'list' ? 'selected' : '' }}>View
                                             </option>
                                         </select>
                                         @error('access')
@@ -74,7 +74,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Description <span class="text-danger">*</label>
+                                        <label for="description">Description </label>
                                         <input type="text"
                                             class="form-control @error('description') is-invalid @enderror" id="description"
                                             value="{{ $permission->description }}" placeholder="Enter description"

@@ -34,4 +34,12 @@ class EditBlogRequest extends FormRequest
 
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'category_id.required' => ' The category field is required. ',
+            'country_id.required' => ' The country field is required. '
+        ];
+    }
 }

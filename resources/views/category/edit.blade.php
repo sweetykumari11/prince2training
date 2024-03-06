@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Content<span class="text-danger">*</span></label>
+                                    <label>Content</label>
                                     <textarea id="summernote" class="summernote @error('content') is-invalid @enderror" name="content">{{ $category->content }}</textarea>
                                     @error('content')
                                         <span class="error invalid-feedback" role="alert">

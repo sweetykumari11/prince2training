@@ -36,4 +36,12 @@ class LocationUpdateRequest extends FormRequest
             'meta_keywords' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'region_id.required' => ' The region field is required. ',
+            'country_id.required' => ' The country field is required. '
+        ];
+    }
 }
