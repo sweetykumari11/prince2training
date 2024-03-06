@@ -185,14 +185,12 @@
                                                                 .replace(
                                                                     ':id',
                                                                     data);
-                                                            @php
-                                                                $isAdmin = in_array('Admin', array_column(Auth::user()->roles->toArray(), 'name'));
-                                                            @endphp
+
 
                                                             var action = '<a href="' + editUrl +
                                                                 '" class="fas fa-edit"></a>';
 
-                                                            if (@json($isAdmin)) {
+
                                                                 action += '<a href="#" class="delete-link" ' +
                                                                     'onclick="event.preventDefault(); document.getElementById(\'' +
                                                                     deleteFormId + '\').submit();">' +
@@ -204,7 +202,7 @@
                                                                     '@csrf' +
                                                                     '@method('DELETE')' +
                                                                     '</form>';
-                                                            }
+
                                                             return action;
                                                         }
                                                     },
