@@ -42,8 +42,8 @@
                                                 <th scope="col">Category Name</th>
                                                 <th scope="col">Logo</th>
                                                 <th scope="col">Active</th>
-                                                {{-- <th scope="col">Country Active</th>
-                                                <th scope="col">Country Popular</th> --}}
+                                                <th scope="col">Country Active</th>
+                                                <th scope="col">Country Popular</th>
                                                 <th scope="col">Details</th>
                                                 <th scope="col">FaQ</th>
                                                 <th scope="col">Created At</th>
@@ -86,47 +86,47 @@
                                                         name: 'is_active',
                                                         render: function(data, type, full, meta) {
                                                             if (data) {
-                                                                return '<i class="fa fa-check-circle text-success is_active" data-activestatus="1" data-val="' +
-                                                                    full.id + '"></i>';
+                                                                return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="' +
+                                                                    0 + '" data-val="' + full.id + '"></i>';
                                                             } else {
-                                                                return '<i class="fa fa-times-circle text-danger is_active" data-activestatus="0" data-val="' +
-                                                                    full.id + '"></i>';
+                                                                return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="' +
+                                                                    1 + '" data-val="' + full.id + '"></i>';
                                                             }
                                                         }
                                                     },
-                                                    // {
-                                                    //     data: 'country',
-                                                    //     name: 'country',
-                                                    //     render: function(data, type, full, meta) {
-                                                    //         var isChecked = full.countries.some(function(country) {
-                                                    //             if (country.pivot.deleted_at == null) {
-                                                    //                 return true;
-                                                    //             } else {
-                                                    //                 return false;
-                                                    //             }
-                                                    //         });
+                                                    {
+                                                        data: 'country',
+                                                        name: 'country',
+                                                        render: function(data, type, full, meta) {
+                                                            var isChecked = full.countries.some(function(country) {
+                                                                if (country.pivot.deleted_at == null) {
+                                                                    return true;
+                                                                } else {
+                                                                    return false;
+                                                                }
+                                                            });
 
-                                                    //         return '<input type="checkbox" class="topic-checkbox" data-topic-id="' +
-                                                    //             full.id + '" ' +
-                                                    //             (isChecked ? 'checked' : '') + '>';
-                                                    //     }
-                                                    // },
-                                                    // {
-                                                    //     data: 'popular',
-                                                    //     name: 'popular',
-                                                    //     render: function(data, type, full, meta) {
-                                                    //         var ispopular = full.countries.some(function(country) {
-                                                    //             return country.pivot.is_popular;
-                                                    //         });
-                                                    //         if (ispopular == 1) {
-                                                    //             return '<i class="fas fa-toggle-on text-primary is_popular" data-popularstatus="' +
-                                                    //                 0 + '" data-val="' + full.id + '"></i>';
-                                                    //         } else {
-                                                    //             return '<i class="fas fa-toggle-on text-secondary is_popular" data-popularstatus="' +
-                                                    //                 1 + '" data-val="' + full.id + '"></i>';
-                                                    //         }
-                                                    //     }
-                                                    // },
+                                                            return '<input type="checkbox" class="topic-checkbox" data-topic-id="' +
+                                                                full.id + '" ' +
+                                                                (isChecked ? 'checked' : '') + '>';
+                                                        }
+                                                    },
+                                                    {
+                                                        data: 'popular',
+                                                        name: 'popular',
+                                                        render: function(data, type, full, meta) {
+                                                            var ispopular = full.countries.some(function(country) {
+                                                                return country.pivot.is_popular;
+                                                            });
+                                                            if (ispopular == 1) {
+                                                                return '<i class="fas fa-toggle-on text-primary is_popular" data-popularstatus="' +
+                                                                    0 + '" data-val="' + full.id + '"></i>';
+                                                            } else {
+                                                                return '<i class="fas fa-toggle-on text-secondary is_popular" data-popularstatus="' +
+                                                                    1 + '" data-val="' + full.id + '"></i>';
+                                                            }
+                                                        }
+                                                    },
                                                     {
                                                         data: 'id',
                                                         name: 'detail',
@@ -185,24 +185,26 @@
                                                                 .replace(
                                                                     ':id',
                                                                     data);
-
+                                                            @php
+                                                                $isAdmin = in_array('Admin', array_column(Auth::user()->roles->toArray(), 'name'));
+                                                            @endphp
 
                                                             var action = '<a href="' + editUrl +
                                                                 '" class="fas fa-edit"></a>';
 
-
-                                                            action += '<a href="#" class="delete-link" ' +
-                                                                'onclick="event.preventDefault(); document.getElementById(\'' +
-                                                                deleteFormId + '\').submit();">' +
-                                                                '<i class="fas fa-trash text-danger"></i>' +
-                                                                '</a>' +
-                                                                '<form id="' + deleteFormId + '" ' +
-                                                                ' action="' + deleteUrl +
-                                                                '" method="POST" style="display: none;">' +
-                                                                '@csrf' +
-                                                                '@method('DELETE')' +
-                                                                '</form>';
-
+                                                            if (@json($isAdmin)) {
+                                                                action += '<a href="#" class="delete-link" ' +
+                                                                    'onclick="event.preventDefault(); document.getElementById(\'' +
+                                                                    deleteFormId + '\').submit();">' +
+                                                                    '<i class="fas fa-trash text-danger"></i>' +
+                                                                    '</a>' +
+                                                                    '<form id="' + deleteFormId + '" ' +
+                                                                    ' action="' + deleteUrl +
+                                                                    '" method="POST" style="display: none;">' +
+                                                                    '@csrf' +
+                                                                    '@method('DELETE')' +
+                                                                    '</form>';
+                                                            }
                                                             return action;
                                                         }
                                                     },
@@ -268,7 +270,7 @@
                 url: url,
                 data: {
                     'topic_id': topic_id,
-                    'checked': checked
+                     'checked': checked
                 },
                 success: function(data) {
                     $(this).prop('checked', data.deleted_at === null);
@@ -278,20 +280,5 @@
     </script>
 @endpush
 
-{{-- //         $(document).on('click', '.topic-checkbox', function() {
-//             var topic_id = $(this).data('topic-id');
-//             var checked = $(this).prop('checked');
-//             var url = '/country-topics';
-//             $.ajax({
-//                 type: "GET",
-//                 dataType: "json",
-//                 url: url,
-//                 data: {
-//                     'topic_id': topic_id,
-//                     'checked': checked
-//                 },
-//                 success: function(data) {
-//                     $(this).prop('checked', data.deleted_at === null);
-//                 }
-//             });
-//         }); --}}
+
+
