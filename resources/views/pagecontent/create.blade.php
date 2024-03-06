@@ -12,7 +12,7 @@
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('pagecontent.index') }}">Page Content Form</a></li>
-                            <li class="breadcrumb-item active">Create Pagecontent</li>
+                            <li class="breadcrumb-item active">Create Page Content</li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Create Pagecontent</h3>
+                                <h3 class="card-title">Create Page Content</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
