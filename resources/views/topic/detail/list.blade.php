@@ -36,21 +36,8 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Id</th>
-                                                <th scope="col">topic_id</th>
-                                                <th scope="col">country_id</th>
-                                                <th scope="col">heading</th>
-                                                <th scope="col">summary</th>
-                                                <th scope="col">detail</th>
-                                                <th scope="col">overview</th>
-                                                <th scope="col">whats_included</th>
-                                                <th scope="col">pre_requiste</th>
-                                                <th scope="col">who_should_attend</th>
-                                                <th scope="col">added_by</th>
-                                                <th scope="col">meta_title</th>
-                                                <th scope="col">meta_keywords</th>
-                                                <th scope="col">meta_description</th>
-                                                <th scope="col">created_by</th>
-                                                <th scope="col">updated_by</th>
+                                                <th scope="col">Topic Name</th>
+                                                <th scope="col">Country</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -68,65 +55,12 @@
                                                         name: 'id'
                                                     },
                                                     {
-                                                        data: 'topic.id',
-                                                        name: 'topic.id'
+                                                        data: 'topic.name',
+                                                        name: 'topic.name'
                                                     },
                                                     {
-                                                        data: 'country.id',
-                                                        name: 'country.id'
-                                                    },
-                                                    {
-                                                        data: 'heading',
-                                                        name: 'heading'
-                                                    },
-                                                    {
-                                                        data: 'summary',
-                                                        name: 'summary'
-                                                    },
-                                                    {
-                                                        data: 'detail',
-                                                        name: 'detail'
-                                                    },
-                                                    {
-                                                        data: 'overview',
-                                                        name: 'overview'
-                                                    },
-                                                    {
-                                                        data: 'whats_included',
-                                                        name: 'whats_included'
-                                                    },
-                                                    {
-                                                        data: 'pre_requiste',
-                                                        name: 'pre_requiste'
-                                                    },
-                                                    {
-                                                        data: 'who_should_attend',
-                                                        name: 'who_should_attend'
-                                                    },
-                                                    {
-                                                        data: 'added_by',
-                                                        name: 'added_by'
-                                                    },
-                                                    {
-                                                        data: 'meta_title',
-                                                        name: 'meta_title'
-                                                    },
-                                                    {
-                                                        data: 'meta_keywords',
-                                                        name: 'meta_keywords'
-                                                    },
-                                                    {
-                                                        data: 'meta_description',
-                                                        name: 'meta_description'
-                                                    },
-
-                                                    {
-                                                        data: 'created_at',
-                                                        name: 'created_at'
-                                                    },
-                                                    {
-                                                        data: 'updated_at',
-                                                        name: 'updated_at'
+                                                        data: 'country.name',
+                                                        name: 'country.name'
                                                     },
                                                     {
                                                         data: 'id',
