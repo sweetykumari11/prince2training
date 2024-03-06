@@ -14,6 +14,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\BlogDetailController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\LogActivityController;
 use App\Http\Controllers\PageContentController;
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +57,8 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
     Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
     Route::get('changecategoryStatus',    [CategoryController::class, 'categoryStatus']);
+    Route::post('rolesupdate',       [UserController::class, 'rolesupdate'])->name('user.rolesupdate');
+    Route::get('actvities', [LogActivityController::class, 'index'])->name('actvities.index');
+
+
 });
