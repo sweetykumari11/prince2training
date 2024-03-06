@@ -25,8 +25,13 @@ class TagController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Tag::with('creator');
-            return Datatables::eloquent($query)->make(true);
+            $query = Tag::get();
+            return Datatables::of($query)
+            ->addIndexColumn()
+            ->addColumn('creator_name', function($row){ 
+                return $row->creator ? $row->creator->name : '';      
+            })
+            ->make(true);
         }
         return view('tag.list');
     }
