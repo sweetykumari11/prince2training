@@ -24,7 +24,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">User list</h3>
+                                <h3 class="card-title text">User List</h3>
                                 <div class="float-right">
                                     <a class="btn btn-block btn-sm btn-success" href="{{ route('user.create') }}"> Create
                                         New User</a>
@@ -86,6 +86,7 @@
                                                         data: 'roles',
                                                         name: 'roles',
                                                         searchable: false,
+                                                        orderable: false,
                                                         render: function(data, type, full, meta) {
                                                             return data.map(role => role.name).join(', ');
                                                         }
@@ -93,6 +94,7 @@
                                                     {
                                                         data: 'is_active',
                                                         name: 'is_active',
+                                                        
                                                         render: function(data, type, full, meta) {
                                                             if (data) {
                                                                 return '<i class="fa fa-check-circle text-success is_active" data-activestatus="1" data-val="' +
@@ -106,6 +108,8 @@
                                                     {
                                                         data: 'password',
                                                         name: 'password',
+                                                        orderable: false,
+                                                        searchable: false,
                                                         render: function(data, type, full, meta) {
                                                             return '<a href="/password/reset/' + full.id +
                                                                 '" id="password-reset-link-' + full.id +

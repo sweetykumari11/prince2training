@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-sm-12">
                         <ol class="breadcrumb float-sm-right">
-                            {{-- <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">Blog</a></li> --}}
+                             <li class="breadcrumb-item"><a href="{{ route('countries.index') }}">Country</a></li>
                         </ol>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                                 <h3 class="card-title">Country</h3>
                                 <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
                                         href="{{ route('countries.create') }}">
-                                        Create new country</a>
+                                        Create New Country</a>
                                 </div>
                             </div>
                             <div class="card-body">

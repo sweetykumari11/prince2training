@@ -40,6 +40,8 @@ class LocationRequest extends FormRequest
     {
         return [
             'phone.regex' => 'The phone number must be exactly 10 digits.',
+            'region_id.required' => ' The region field is required. ',
+            'country_id.required' => ' The country field is required. '
         ];
     }
 }

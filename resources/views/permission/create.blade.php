@@ -36,7 +36,7 @@
                                         <label for="category_id">Module Name<span class="text-danger">*</label>
                                         <select class="form-control select2bs4 @error('module_id') is-invalid @enderror"
                                             id="module_id" name="module_id">
-                                            <option value="">Select a Module</option> <!-- Default empty option -->
+                                            <option value="">--Select a Module--</option> <!-- Default empty option -->
                                             @foreach ($modules as $module)
                                                 <option value="{{ $module->id }}">{{ $module->name }}</option>
                                             @endforeach
@@ -51,11 +51,11 @@
                                         <label for="category_id">Access<span class="text-danger">*</label>
                                         <select class="form-control select2bs4 @error('access') is-invalid @enderror"
                                             id="access" name="access">
-                                            <option value ="">select Access</option>
-                                            <option value ="insert">insert</option>
-                                            <option value ="update">update</option>
-                                            <option value ="delete">delete</option>
-                                            <option value ="list">view</option>
+                                            <option value ="">--Select Access--</option>
+                                            <option value ="Insert">Insert</option>
+                                            <option value ="Update">Update</option>
+                                            <option value ="Delete">Delete</option>
+                                            <option value ="List">View</option>
                                         </select>
                                         @error('access')
                                             <span class="error invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                                         <label for="description">Description </label>
                                         <input type="text"
                                             class="form-control @error('description') is-invalid @enderror" id="description"
-                                            placeholder="Enter description" name="description">
+                                            placeholder="Enter Description" name="description">
                                         @error('description')
                                             <span class="error invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

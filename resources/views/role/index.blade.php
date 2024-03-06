@@ -90,7 +90,7 @@
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Description</th>
                                                 <th scope="col">User Counts</th>
-                                                <th scope="col">Is Active</th>
+                                                <th scope="col">Active</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>

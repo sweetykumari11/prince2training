@@ -28,4 +28,11 @@ class RegionRequest extends FormRequest
 
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'country_id.required' => ' The country field is required. '
+        ];
+    }
 }
