@@ -21,7 +21,7 @@ class TopicDetailController extends Controller
         if ($request->ajax()) {
             $query = Topicdetail::with('country', 'topic');
             $query->where('topic_id', $id);
-            $query->where('country_id', session('country')->id);
+           // $query->where('country_id', session('country')->id);
             return Datatables::eloquent($query)->make(true);
         }
         return view('topic.detail.list', compact('id'));
@@ -42,6 +42,7 @@ class TopicDetailController extends Controller
     public function store($id, TopicDetailRequest $request)
 
     {
+
         Topicdetail::create([
             'topic_id' =>  $request->topic_id,
             'country_id' => $request->country,
@@ -117,29 +118,5 @@ class TopicDetailController extends Controller
             ->with('danger', 'Topic Detail deleted successfully');
     }
 
-    public function trashedTopicDetail(Request $request)
-    {
-        if ($request->ajax()) {
-            $trashedTopicDetails = TopicDetail::onlyTrashed();
-            return Datatables::eloquent($trashedTopicDetails)->make(true);
-        }
-        return view('trash.topicdetail_list');
-    }
 
-
-    public function restore($id)
-    {
-        $topicDetail = TopicDetail::withTrashed()->findOrFail($id);
-        $topicDetail->restore();
-        session()->flash('success', 'TopicDetail Restored successfully.');
-        return redirect()->route('topic.topicdetails.index', $topicDetail->topic_id);
     }
-
-    public function delete($id)
-    {
-        $topicDetail = TopicDetail::withTrashed()->findOrFail($id);
-        $topicDetail->forceDelete();
-        session()->flash('danger', 'TopicDetail Deleted successfully.');
-        return redirect()->route('trashedTopicDetail');
-    }
-}
