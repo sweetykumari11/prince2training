@@ -19,25 +19,25 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ route('user.index') }}" class="nav-link @if ($url_segment == 'user') active @endif">
+            <a href="{{ route('user.index') }}" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon text-danger"></i>
                 <p>User</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('role.index') }}" class="nav-link @if ($url_segment == 'role') active @endif">
+            <a href="{{ route('role.index') }}" class="nav-link {{ Request::is('role') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon text-warning"></i>
                 <p>Role</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('permission.index') }}" class="nav-link @if ($url_segment == 'permission') active @endif">
+            <a href="{{ route('permission.index') }}" class="nav-link {{ Request::is('permission') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon text-success"></i>
                 <p>Permission</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('module.index') }}" class="nav-link @if ($url_segment == 'module') active @endif">
+            <a href="{{ route('module.index') }}" class="nav-link  {{ Request::is('module') ? 'active' : '' }}">
                 <i class="nav-icon far fa-circle"></i>
                 <p>Module</p>
             </a>
@@ -45,25 +45,25 @@
     </ul>
 </li>
 <li class="nav-item">
-    <a href="{{ route('pagecontent.index') }}" class="nav-link @if ($url_segment == 'pagecontent') active @endif">
+    <a href="{{ route('pagecontent.index') }}" class="nav-link  {{ Request::is('pagecontent') ? 'active' : '' }}">
         <i class="nav-icon fas fa-th"></i>
         <p>Page Details</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('blogs.index') }}" class="nav-link @if ($url_segment == 'blogs') active @endif">
+    <a href="{{ route('blogs.index') }}" class="nav-link {{ Request::is('blogs') ? 'active' : '' }}">
         <i class="nav-icon fas fa-edit"></i>
         <p>Blog</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('tag.index') }}" class="nav-link @if ($url_segment == 'tag') active @endif">
+    <a href="{{ route('tag.index') }}" class="nav-link {{ Request::is('tag') ? 'active' : '' }}">
         <i class="nav-icon fas fa-stroopwafel"></i>
         <p>Tag</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('category.index') }}" class="nav-link @if ($url_segment == 'category') active @endif">
+    <a href="{{ route('category.index') }}" class="nav-link {{ Request::is('category') ? 'active' : '' }}">
         <i class="nav-icon fas fa-indent"></i>
         <p>Category</p>
     </a>
