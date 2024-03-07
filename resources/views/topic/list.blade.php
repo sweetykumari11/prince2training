@@ -84,13 +84,14 @@
                                                     {
                                                         data: 'is_active',
                                                         name: 'is_active',
+
                                                         render: function(data, type, full, meta) {
                                                             if (data) {
-                                                                return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="' +
-                                                                    0 + '" data-val="' + full.id + '"></i>';
+                                                                return '<i class="fa fa-check-circle text-success is_active" data-activestatus="1" data-val="' +
+                                                                    full.id + '"></i>';
                                                             } else {
-                                                                return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="' +
-                                                                    1 + '" data-val="' + full.id + '"></i>';
+                                                                return '<i class="fa fa-times-circle text-danger is_active" data-activestatus="0" data-val="' +
+                                                                    full.id + '"></i>';
                                                             }
                                                         }
                                                     },
@@ -191,17 +192,17 @@
                                                                 '" class="fas fa-edit"></a>';
 
 
-                                                                action += '<a href="#" class="delete-link" ' +
-                                                                    'onclick="event.preventDefault(); document.getElementById(\'' +
-                                                                    deleteFormId + '\').submit();">' +
-                                                                    '<i class="fas fa-trash text-danger"></i>' +
-                                                                    '</a>' +
-                                                                    '<form id="' + deleteFormId + '" ' +
-                                                                    ' action="' + deleteUrl +
-                                                                    '" method="POST" style="display: none;">' +
-                                                                    '@csrf' +
-                                                                    '@method('DELETE')' +
-                                                                    '</form>';
+                                                            action += '<a href="#" class="delete-link" ' +
+                                                                'onclick="event.preventDefault(); document.getElementById(\'' +
+                                                                deleteFormId + '\').submit();">' +
+                                                                '<i class="fas fa-trash text-danger"></i>' +
+                                                                '</a>' +
+                                                                '<form id="' + deleteFormId + '" ' +
+                                                                ' action="' + deleteUrl +
+                                                                '" method="POST" style="display: none;">' +
+                                                                '@csrf' +
+                                                                '@method('DELETE')' +
+                                                                '</form>';
 
                                                             return action;
                                                         }
@@ -268,7 +269,7 @@
                 url: url,
                 data: {
                     'topic_id': topic_id,
-                     'checked': checked
+                    'checked': checked
                 },
                 success: function(data) {
                     $(this).prop('checked', data.deleted_at === null);
@@ -277,6 +278,3 @@
         });
     </script>
 @endpush
-
-
-
