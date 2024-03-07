@@ -126,11 +126,7 @@
                                         <div class="timeline-item">
                                             <div class="card-header">
                                                 <h3 class="card-title">
-                                                    @if($activity->created_by)
-                                                        {{ $activity->creator->name }}
-                                                    @else
-                                                        System
-                                                    @endif
+                                                    <h3 class="card-title">{{ $activity->creator->name ?? '' }}</h3>
                                                 </h3>
                                             </div>
                                             <h3 class="timeline-header no-border"> {{ $activity->activity }} </a></h3>
