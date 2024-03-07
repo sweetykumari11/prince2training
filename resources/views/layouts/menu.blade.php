@@ -81,25 +81,25 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('countries.index') }}" class="nav-link @if ($url_segment == 'countries') active @endif">
+    <a href="{{ route('countries.index') }}" class="nav-link {{ Request::is('countries') ? 'active' : '' }}">
         <i class="nav-icon far fa-map"></i>
         <p>Country</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('locations.index') }}" class="nav-link @if ($url_segment == 'locations') active @endif">
+    <a href="{{ route('locations.index') }}" class="nav-link  {{ Request::is('locations') ? 'active' : '' }} ">
         <i class="nav-icon fas fa-map-marker-alt"></i>
         <p>Location</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('region.index') }}" class="nav-link @if ($url_segment == 'region') active @endif">
+    <a href="{{ route('region.index') }}" class="nav-link  {{ Request::is('region') ? 'active' : '' }} ">
         <i class="nav-icon fas fa-map-pin"></i>
         <p>Region</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('actvities.index') }}" class="nav-link @if ($url_segment == 'actvities') active @endif">
+    <a href="{{ route('actvities.index') }}" class="nav-link  {{ Request::is('actvities') ? 'active' : '' }}">
         <i class="nav-icon fas fa-th"></i>
         <p>Activity Log</p>
     </a>
