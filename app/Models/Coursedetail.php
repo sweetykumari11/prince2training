@@ -31,7 +31,8 @@ class Coursedetail extends Model
         'pdu',
         'audience',
         'accreditationId',
-        'exam_included'
+        'exam_included',
+        'created_by'
     ];
 
     // public static function boot()
