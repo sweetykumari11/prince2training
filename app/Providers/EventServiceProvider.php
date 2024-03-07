@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Faq;
 use App\Models\Tag;
 use App\Models\Blog;
 use App\Models\Topic;
-use App\Models\Course;
 
+use App\Models\Course;
 use App\Models\Region;
 use App\Models\Country;
 use App\Models\Category;
@@ -14,6 +15,7 @@ use App\Models\BlogDetail;
 use App\Models\PageContent;
 use App\Models\Topicdetail;
 use App\Models\Coursedetail;
+use App\Observers\FaqObserver;
 use App\Observers\TagObserver;
 use App\Observers\BlogObserver;
 use App\Observers\TopicObserver;
@@ -62,6 +64,7 @@ class EventServiceProvider extends ServiceProvider
         Topicdetail::observe(TopicdetailObserver::class);
         Course::observe(CourseObserver::class);
         Coursedetail::observe(CoursedetailObserver::class);
+        Faq::observe(FaqObserver::class);
     }
 
     /**
