@@ -69,6 +69,18 @@
     </a>
 </li>
 <li class="nav-item">
+    <a href="{{ route('topic.index') }}" class="nav-link {{ Request::is('topic') ? 'active' : '' }}">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <p>Topic</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ route('course.index') }}" class="nav-link {{ Request::is('course') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-th"></i>
+        <p>Course</p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="{{ route('countries.index') }}" class="nav-link @if ($url_segment == 'countries') active @endif">
         <i class="nav-icon far fa-map"></i>
         <p>Country</p>
@@ -92,9 +104,4 @@
         <p>Activity Log</p>
     </a>
 </li>
-<li class="nav-item">
-    <a href="{{ route('topic.index') }}" class="nav-link {{ Request::is('topic') ? 'active' : '' }}">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
-        <p>Topic</p>
-    </a>
-</li>
+

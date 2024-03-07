@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\CountryController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\LogActivityController;
 use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\TopicDetailController;
+use App\Http\Controllers\CoursedetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +52,7 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::resource('pagecontent',      PageContentController::class);
     Route::resource('blogs',            BlogController::class);
     Route::resource('tag',              TagController::class);
+    Route::resource('course',           CourseController::class);
     Route::resource('countries',              CountryController::class);
     Route::resource('category',         CategoryController::class);
     Route::resource('region', RegionController::class);
@@ -58,6 +61,8 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::resource('topic',            TopicController::class);
     Route::resource('topic.faqs',               FaqController::class);
     Route::resource('topic.topicdetails',       TopicDetailController::class);
+    Route::resource('course.coursedetails',     CoursedetailController::class);
+    Route::resource('course.faqs',              FaqController::class);
 
 
     Route::get('changeblogStatus',        [BlogController::class, 'blogStatus']);
