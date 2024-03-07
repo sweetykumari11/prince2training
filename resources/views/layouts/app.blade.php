@@ -128,10 +128,12 @@
             <div id="danger-message" class="alert alert-danger" role="alert" style="display: none;"></div>
             @yield('content')
         </div>
-        <footer class="main-footer float-right">
-            <strong>Copyright &copy; <?php echo date('Y')?> <a href="{{url('/')}}">Prince2 Training</a>.</strong>
+        <footer class="main-footer">
+            <strong>Copyright © 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
-            
+            <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 3.2.0
+            </div>
         </footer>
 
         <!-- Control Sidebar -->
