@@ -57,8 +57,8 @@ class FaqController extends Controller
 
         if ($segment  === 'topic') {
             $entity =  Topic::findOrFail($id);
-        // } elseif ($segment  === 'course') {
-        //     $entity =  Course::findOrFail($id);
+        } elseif ($segment  === 'course') {
+            $entity =  Course::findOrFail($id);
         }
 
         $is_active = $request->is_active == "on" ? 1 : 0;
