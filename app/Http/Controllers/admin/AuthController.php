@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Carbon\Carbon;
 
@@ -21,7 +22,7 @@ class AuthController extends Controller
     }
     public function index()
     {
-        return view('auth.login');
+        return view('admin.auth.login');
     }
     public function customLogin(LoginRequest $request)
     {
