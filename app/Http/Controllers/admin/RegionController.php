@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 
 use App\Models\Region;
@@ -25,7 +25,7 @@ class RegionController extends Controller
             $query = Region::with(['creator', 'country']);
             return Datatables::eloquent($query)->make(true);
         }
-        return view('region.list');
+        return view('admin.region.list');
     }
     /**
      * Show the form for creating a new resource.
@@ -33,7 +33,7 @@ class RegionController extends Controller
     public function create()
     {
         $countries = Country::all();
-        return view('region.create',compact('countries'));
+        return view('admin.region.create',compact('countries'));
     }
 
     /**
@@ -56,7 +56,7 @@ class RegionController extends Controller
     public function edit(Region $region): View
     {
         $countries = Country::all();
-        return view('region.edit', compact('region', 'countries'));
+        return view('admin.region.edit', compact('region', 'countries'));
     }
 
     /**

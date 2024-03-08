@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\LogActivity;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\Datatables;
+use App\Http\Controllers\Controller;
 
 class LogActivityController extends Controller
 {
@@ -14,6 +15,6 @@ class LogActivityController extends Controller
             $query = LogActivity::with('creator');
             return Datatables::eloquent($query)->make(true);
         }
-        return view('logactivities.list');
+        return view('admin.logactivities.list');
     }
 }

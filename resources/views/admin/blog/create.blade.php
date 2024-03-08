@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('admin.layouts.app') @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -33,7 +33,7 @@
                                     <label>Category<span class="text-danger">*</span></label>
                                     <select id="blog_category" name="category_id"
                                         class="form-control select2bs4 @error('category_id') is-invalid @enderror">
-                                        <option value="">Select a category</option>
+                                        <option value="">--Select a category--</option>
                                         @if (!empty($category))
                                             @foreach ($category as $categories)
                                                 <option value="{{ $categories->id }}">{{ $categories->name }}</option>
@@ -50,7 +50,7 @@
                                     <label>Country<span class="text-danger">*</span></label>
                                     <select id="blog_country" name="country_id"
                                         class="form-control select2bs4 @error('country_id') is-invalid @enderror">
-                                        <option value="">Select a Country</option>
+                                        <option value="">--Select a Country--</option>
                                         {{-- @foreach ($country as $countries)
                                             <option value="{{ $countries->id }}" @if (session('country')->id == $countries->id) selected @endif>{{ $countries->name }}</option>
                                         @endforeach --}}

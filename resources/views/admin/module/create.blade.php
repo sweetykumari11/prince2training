@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
     <div class="container-fluid">
@@ -31,6 +31,7 @@
                             <div class="card-body">
                                 <form method="POST" action="{{ route('module.store') }}" enctype="multipart/form-data">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                    <input type="hidden" name="id" value="">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Name<span class="text-danger">*</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"

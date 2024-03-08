@@ -22,7 +22,7 @@ class UpdateModuleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required'
+            'name'=>"required|unique:module,name,{$this->id},id,deleted_at,NULL"
         ];
     }
 }

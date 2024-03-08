@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Requests\TagRequest;
@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Yajra\DataTables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class TagController extends Controller
 {
@@ -33,7 +34,7 @@ class TagController extends Controller
             })
             ->make(true);
         }
-        return view('tag.list');
+        return view('admin.tag.list');
     }
 
     /**
@@ -42,7 +43,7 @@ class TagController extends Controller
     public function create()
     {
         $tags = Tag::where('is_active', 1)->get();
-        return view('tag.create', ['tags' => $tags]);
+        return view('admin.tag.create', ['tags' => $tags]);
     }
 
     /**
@@ -73,7 +74,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag): View
     {
-        return view('tag.edit', compact('tag'));
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**

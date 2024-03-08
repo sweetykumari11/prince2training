@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Permission;
 use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use Yajra\DataTables\Facades\Datatables;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Module;
 
@@ -33,7 +34,7 @@ class PermissionController extends Controller
                 ->make(true);
         }
 
-        return view('permission.index', compact('modules'));
+        return view('admin.permission.index', compact('modules'));
     }
     /**
      * Show the form for creating a new resource.
@@ -41,7 +42,7 @@ class PermissionController extends Controller
     public function create()
     {
        $modules= Module::all();
-        return view('permission.create',compact('modules'));
+        return view('admin.permission.create',compact('modules'));
     }
 
     /**
@@ -90,7 +91,7 @@ class PermissionController extends Controller
     public function edit(Permission $permission)
     {
         $modules = Module::where('is_active', 1)->get();
-        return view('permission.edit', compact('permission', 'modules'));
+        return view('admin.permission.edit', compact('permission', 'modules'));
     }
 
     /**

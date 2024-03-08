@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Module;
 use App\Http\Requests\StoreModuleRequest;
 use App\Http\Requests\UpdateModuleRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\Datatables;
 
@@ -19,7 +20,7 @@ class ModuleController extends Controller
             $query = Module::query();
             return Datatables::eloquent($query)->make(true);
         }
-        return view('module.index');
+        return view('admin.module.index');
     }
 
     /**
@@ -27,7 +28,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        return view('module.create');
+        return view('admin.module.create');
     }
 
     /**
@@ -57,7 +58,7 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
-        return view('module.edit', compact('module'));
+        return view('admin.module.edit', compact('module'));
     }
 
     /**

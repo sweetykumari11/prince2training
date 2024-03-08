@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\Topic;
 use App\Models\Course;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\FaqRequest;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +22,6 @@ class FaqController extends Controller
         $segment = $uriSegments[1];
         if ($request->ajax()) {
             $query = Faq::with('creator');
-
             if ($segment === 'topic') {
                 $query->where('entity_id', $id);
                 $query->where('entity_type', 'App\Models\Topic');
@@ -31,10 +29,9 @@ class FaqController extends Controller
                 $query->where('entity_id', $id);
                 $query->where('entity_type', 'App\Models\Course');
             }
-
             return Datatables::eloquent($query)->make(true);
         }
-        return view('faq.list', compact('id', 'segment'));
+        return view('admin.faq.list', compact('id', 'segment'));
     }
 
     /**
@@ -44,7 +41,7 @@ class FaqController extends Controller
     {
         $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         $segment = $uriSegments[1];
-        return view('faq.create', compact('id', 'segment'));
+        return view('admin.faq.create', compact('id', 'segment'));
     }
 
     /**
@@ -53,14 +50,12 @@ class FaqController extends Controller
     public function store($id, FaqRequest $request)
     {
         $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        $segment = $uriSegments[1];
-
+        $segment = $uriSegments[2];
         if ($segment  === 'topic') {
             $entity =  Topic::findOrFail($id);
         } elseif ($segment  === 'course') {
             $entity =  Course::findOrFail($id);
         }
-
         $is_active = $request->is_active == "on" ? 1 : 0;
         $entity->faqs()->create([
             'question' => $request->question,
@@ -68,7 +63,6 @@ class FaqController extends Controller
             'is_active' => $is_active,
             'created_by' => Auth::user()->id
         ]);
-
         if ($segment  === 'topic') {
             return redirect()->route('topic.faqs.index', $id)
                 ->with('success', 'Faq created successfully.');
@@ -92,8 +86,8 @@ class FaqController extends Controller
     public function edit($id, Faq $faq)
     {
         $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        $segment = $uriSegments[1];
-        return view('faq.edit', compact('id', 'faq', 'segment'));
+        $segment = $uriSegments[2];
+        return view('admin.faq.edit', compact('id', 'faq', 'segment'));
     }
 
     /**
@@ -108,10 +102,10 @@ class FaqController extends Controller
             'is_active' => $is_active
         ]);
         $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        if ($uriSegments[1] === 'topic') {
+        if ($uriSegments[2] === 'topic') {
             return redirect()->route('topic.faqs.index', $id)
                 ->with('success', 'Faq created successfully.');
-        } elseif ($uriSegments[1] === 'course') {
+        } elseif ($uriSegments[2] === 'course') {
             return redirect()->route('course.faqs.index', $id)
                 ->with('success', 'Faq created successfully.');
         }
@@ -124,10 +118,10 @@ class FaqController extends Controller
     {
         $faq->delete();
         $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        if ($uriSegments[1] === 'topic') {
+        if ($uriSegments[2] === 'topic') {
             return redirect()->route('topic.faqs.index', $id)
                 ->with('success', 'Faq deleted successfully.');
-        } elseif ($uriSegments[1] === 'course') {
+        } elseif ($uriSegments[2] === 'course') {
             return redirect()->route('course.faqs.index', $id)
                 ->with('success', 'Faq deleted successfully.');
         }

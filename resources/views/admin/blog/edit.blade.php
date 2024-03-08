@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -36,7 +36,7 @@
                                     <label>Category</label>
                                     <select name="category_id"
                                         class="form-control select2bs4 @error('category_id') is-invalid @enderror">
-                                        <option value="">Select a category</option>
+                                        <option value="">--Select a category--</option>
                                         @foreach ($category as $categories)
                                             <option value="{{ $categories->id }}"
                                                 {{ $categories->id == $blog->category_id ? 'selected' : '' }}>

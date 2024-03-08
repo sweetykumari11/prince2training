@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\User;
 use App\Models\Module;
@@ -9,7 +9,7 @@ use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use Yajra\DataTables\Facades\Datatables;
-
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
@@ -36,7 +36,7 @@ class RoleController extends Controller
         //     $query = Role::query();
         //     return Datatables::eloquent($query)->make(true);
         // }
-        return view('role.index');
+        return view('admin.role.index');
     }
 
     // if ($request->ajax()) {
@@ -59,14 +59,14 @@ class RoleController extends Controller
     // $roles = Role::all();
     //$roleCounts = $roles->groupBy('name')->map->count();
 
-    // return view('role.index');
+    // return view('admin.role.index');
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('role.create');
+        return view('admin.role.create');
     }
 
     /**
@@ -101,7 +101,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $modulesWithPermissions = Module::where('is_active', 1)->with('permissions')->get();
-        return view('role.edit', compact('role', 'modulesWithPermissions'));
+        return view('admin.role.edit', compact('role', 'modulesWithPermissions'));
     }
 
     /**

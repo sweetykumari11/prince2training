@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\Datatables;
 use App\Models\Coursedetail;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class CoursedetailController extends Controller
            // $query->where('country_id', session('country')->id);
             return Datatables::eloquent($query)->make(true);
         }
-        return view('course.detail.list', compact('id'));
+        return view('admin.course.detail.list', compact('id'));
     }
 
     /**
@@ -34,7 +34,7 @@ class CoursedetailController extends Controller
     {
         $courses = Course::where('is_active', 1)->get();
         $countries = Country::get();
-        return view('course.detail.create', compact('id', 'courses', 'countries'));
+        return view('admin.course.detail.create', compact('id', 'courses', 'countries'));
     }
 
     /**
@@ -76,7 +76,7 @@ class CoursedetailController extends Controller
 
         $courses = Course::where('is_active', 1)->get();
         $countries = Country::get();
-        return view('course.detail.edit', compact('id', 'coursedetail', 'courses', 'countries'));
+        return view('admin.course.detail.edit', compact('id', 'coursedetail', 'courses', 'countries'));
     }
 
     /**

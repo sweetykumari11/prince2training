@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CountryRequest;
 use App\Http\Requests\UpdateCountryRequest;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\Datatables;
+use App\Http\Controllers\Controller;
 use App\Models\Country;
 
 class CountryController extends Controller
@@ -16,11 +17,11 @@ class CountryController extends Controller
             $query = Country::query();
             return Datatables::eloquent($query)->make(true);
         }
-        return view('country.list');
+        return view('admin.country.list');
     }
     public function create()
     {
-        return view('country.create');
+        return view('admin.country.create');
     }
     public function store(CountryRequest $request)
     {
@@ -58,7 +59,7 @@ class CountryController extends Controller
     public function edit(Country $country)
     {
 
-         return view('country.edit', compact('country'));
+         return view('admin.country.edit', compact('country'));
     }
     /**
      * Update the specified resource in storage.

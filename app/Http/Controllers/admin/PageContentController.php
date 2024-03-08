@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\PageContent;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\Datatables;
 use App\Http\Requests\UpdatePagecontentRequest;
 use App\Http\Requests\StorePagecontentRequest;
-
+use App\Http\Controllers\Controller;
 
 class PageContentController extends Controller
 {
@@ -18,11 +18,11 @@ class PageContentController extends Controller
             $query = PageContent::query();
             return Datatables::eloquent($query)->make(true);
         }
-        return view('pagecontent.list');
+        return view('admin.pagecontent.list');
     }
     public function create()
     {
-        return view('pagecontent.create');
+        return view('admin.pagecontent.create');
     }
     public function store(StorePagecontentRequest $request)
     {
@@ -66,7 +66,7 @@ class PageContentController extends Controller
     }
     public function edit(PageContent $pagecontent)
     {
-        return view('pagecontent.edit', compact('pagecontent'));
+        return view('admin.pagecontent.edit', compact('pagecontent'));
     }
     public function update(UpdatePagecontentRequest $request, PageContent $pagecontent)
     {

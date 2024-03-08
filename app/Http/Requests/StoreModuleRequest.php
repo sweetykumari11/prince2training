@@ -22,7 +22,7 @@ class StoreModuleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:module,name',
+            'name' => "required|unique:module,name,{$this->id},id,deleted_at,NULL",
         ];
     }
 }

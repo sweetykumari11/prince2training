@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
     <div id="success-message" class="alert alert-success" style="display: none;"></div>
     <div class="container-fluid">
@@ -27,9 +27,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Blog Details list</h3>
+                                <h3 class="card-title">Blog Detail List</h3>
                                 <div class="float-right"> <a class="btn btn-block btn-sm btn-success"
-                                        href="{{ route('blogs.blogDetail.create', $id) }}"> Create New Blog Details</a>
+                                        href="{{ route('blogs.blogDetail.create', $id) }}"> Create New Blog Detail</a>
                                 </div>
                             </div>
                             <!-- /.card-header -->

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -17,7 +17,6 @@
         </div>
         <!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -66,7 +65,6 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="logo">Logo<span class="text-danger">*</span></label>
                                     <div class="input-group">
@@ -92,7 +90,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="customSwitch1"
@@ -118,7 +115,7 @@
                                 <!-- timeline time label -->
                                 @foreach ($course->logActivities as $activity)
                                     <div class="time-label">
-                                        <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A')  }}</span>
+                                        <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
                                     </div>
 
                                     <div>
@@ -133,7 +130,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-
                                 <div>
                                     <i class="fas fa-clock bg-gray"></i>
                                 </div>
@@ -141,12 +137,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.col -->
             </div>
         </div>
     </section>
 @endsection
-
 @push('child-scripts')
     <script>
         function removeLogo() {

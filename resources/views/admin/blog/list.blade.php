@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
     <div class="container-fluid">
         <section class="content-header">
@@ -40,7 +40,7 @@
                                                 <th scope="col">Active</th>
                                                 <th scope="col">Country Active</th>
                                                 <th scope="col">Country Popular</th>
-                                                <th scope="col">Blog Detils</th>
+                                                <th scope="col">Blog Detail</th>
                                                 <th scope="col">Created By</th>
                                                 <th scope="col">Created At</th>
                                                 <th scope="col">Action</th>

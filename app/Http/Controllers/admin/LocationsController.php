@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Region;
 use App\Models\Country;
@@ -28,7 +28,7 @@ class LocationsController extends Controller
             $query = Location::with(['creator', 'region', 'country']);
             return Datatables::eloquent($query)->make(true);
         }
-        return view('locations.list');
+        return view('admin.locations.list');
     }
 
     /**
@@ -38,7 +38,7 @@ class LocationsController extends Controller
     {
         $countries = Country::all();
         $regions = Region::all();
-        return view('locations.create', compact('countries', 'regions'));
+        return view('admin.locations.create', compact('countries', 'regions'));
     }
 
     /**
@@ -94,7 +94,7 @@ class LocationsController extends Controller
         $countries = Country::all();
         $regions = Region::all();
         $slug = $location->slugs()->first();
-        return view('locations.edit', compact('slug', 'location', 'countries', 'regions'));
+        return view('admin.locations.edit', compact('slug', 'location', 'countries', 'regions'));
     }
 
     /**

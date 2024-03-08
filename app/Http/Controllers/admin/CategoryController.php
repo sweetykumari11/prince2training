@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Slug;
 use App\Models\User;
@@ -16,6 +16,7 @@ use Yajra\DataTables\Facades\Datatables;
 use App\Notifications\NewcategoryCreated;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Mail\CategoryCreatedMail;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -30,14 +31,14 @@ class CategoryController extends Controller
             ]);
             return Datatables::eloquent($query)->make(true);
         }
-        return view('category.list');
+        return view('admin.category.list');
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('category.create');
+        return view('admin.category.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -95,7 +96,7 @@ class CategoryController extends Controller
     public function edit(Category $category): View
     {
         $slug = $category->slugs()->first();
-        return view('category.edit', compact('category', 'slug'));
+        return view('admin.category.edit', compact('category', 'slug'));
     }
     /**
      * Update the specified resource in storage.

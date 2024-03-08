@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Requests\StoreBlogdetailsRequest;
 use App\Http\Requests\UpdateBlogdetailRequest;
+use App\Http\Controllers\Controller;
 use App\Models\BlogDetail;
 use App\Models\Blog;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class BlogDetailController extends Controller
             })
             ->make(true);
         }
-        return view('blog.details.list', compact('id'));
+        return view('admin.blog.details.list', compact('id'));
     }
 
     /**
@@ -36,7 +37,7 @@ class BlogDetailController extends Controller
     public function create($id)
     {
         $blogs = Blog::where('is_active', 1)->get();
-        return view('blog.details.create', compact('id', 'blogs'));
+        return view('admin.blog.details.create', compact('id', 'blogs'));
     }
 
     /**
@@ -60,7 +61,7 @@ class BlogDetailController extends Controller
         ]);
         $blogdetail->save();
         return redirect()->route('blogs.blogDetail.index', $request->blog_id)
-            ->with('success', 'Blogdetails created successfully.');
+            ->with('success', 'Blog details created successfully.');
     }
 
     /**
@@ -77,7 +78,7 @@ class BlogDetailController extends Controller
     public function edit($id, BlogDetail $blogDetail)
     {
         $blogs = Blog::where('is_active', 1)->get();
-        return view('blog.details.edit', compact('id', 'blogDetail', 'blogs'));
+        return view('admin.blog.details.edit', compact('id', 'blogDetail', 'blogs'));
     }
 
     /**
@@ -100,7 +101,7 @@ class BlogDetailController extends Controller
             //'is_active' => $active
         ]);
         return redirect()->route('blogs.blogDetail.index', $request->blog_id)
-            ->with('success', 'Blogdetails updated successfully.');
+            ->with('success', 'Blog details updated successfully.');
     }
 
     /**
@@ -110,7 +111,7 @@ class BlogDetailController extends Controller
     {
         $blogDetail->delete();
         return redirect()->route('blogs.blogDetail.index', $id)
-            ->with('success', 'Blogdetails deleted successfully.');
+            ->with('success', 'Blog details deleted successfully.');
     }
     public function updateStatus(Request $request)
     {
@@ -144,7 +145,7 @@ class BlogDetailController extends Controller
     {
         $blogDetail = BlogDetail::withTrashed()->findOrFail($id);
         $blogDetail->forceDelete();
-        session()->flash('danger', 'BlogDetail Deleted successfully.');
+        session()->flash('danger', 'Blog detail deleted successfully.');
         return redirect()->route('trashedBlogDetail');
     }
 }

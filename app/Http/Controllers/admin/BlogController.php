@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Tag;
 
@@ -10,7 +10,7 @@ use App\Models\Category;
 use App\Models\LogActivity;
 use Illuminate\Http\Request;
 use App\Mail\BlogcreatedMail;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -47,7 +47,7 @@ class BlogController extends Controller
             })
             ->make(true);
         }
-        return view('blog.list');
+        return view('admin.blog.list');
     }
     /**
      * Show the form for creating a new resource.
@@ -57,7 +57,7 @@ class BlogController extends Controller
         $category = Category::where('is_active', 1)->get();
         $country = Country::all();
         $tags = Tag::where('is_active', 1)->get();
-        return view('blog.create', compact('category', 'tags', 'country'));
+        return view('admin.blog.create', compact('category', 'tags', 'country'));
     }
     /**
      * Store a newly created resource in storage.
@@ -142,7 +142,7 @@ class BlogController extends Controller
         $category = category::where('is_active', 1)->get();
         $country = Country::all();
         $slug = $blog->slugs()->first();
-        return view('blog.edit', compact('blog', 'category', 'slug', 'tags', 'country'));
+        return view('admin.blog.edit', compact('blog', 'category', 'slug', 'tags', 'country'));
     }
     /**
      * Update the specified resource in storage.

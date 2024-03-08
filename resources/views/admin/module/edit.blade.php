@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
     <div class="container-fluid">
@@ -36,6 +36,7 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT') <!-- Use the PUT method for updating -->
+                                    <input type="hidden" name="id" value="{{$module->id}}">
                                     <div class="form-group">
                                         <label for="name">Name<span class="text-danger">*</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"

@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Models\Topic;
 use App\Models\Country;
 use App\Models\Topicdetail;
@@ -10,7 +10,6 @@ use Yajra\DataTables\Facades\Datatables;
 use App\Http\Requests\TopicDetailRequest;
 use App\Http\Requests\EditTopicdetailRequest;
 use Illuminate\Support\Facades\Auth;
-
 class TopicDetailController extends Controller
 {
     /**
@@ -21,10 +20,10 @@ class TopicDetailController extends Controller
         if ($request->ajax()) {
             $query = Topicdetail::with('country', 'topic');
             $query->where('topic_id', $id);
-           // $query->where('country_id', session('country')->id);
+            // $query->where('country_id', session('country')->id);
             return Datatables::eloquent($query)->make(true);
         }
-        return view('topic.detail.list', compact('id'));
+        return view('admin.topic.detail.list', compact('id'));
     }
     /**
      * Show the form for creating a new resource.
@@ -33,16 +32,14 @@ class TopicDetailController extends Controller
     {
         $topics = Topic::where('is_active', 1)->get();
         $countries = Country::get();
-        return view('topic.detail.create', compact('id', 'topics', 'countries'));
+        return view('admin.topic.detail.create', compact('id', 'topics', 'countries'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store($id, TopicDetailRequest $request)
-
     {
-
         Topicdetail::create([
             'topic_id' =>  $request->topic_id,
             'country_id' => $request->country,
@@ -59,8 +56,6 @@ class TopicDetailController extends Controller
             'meta_description' => $request->meta_description,
             'created_by' => Auth::user()->id
         ]);
-
-
         return redirect()->route('topic.topicdetails.index', $request->topic_id)
             ->with('success', 'Topic Detail created successfully.');
     }
@@ -72,7 +67,6 @@ class TopicDetailController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -80,7 +74,7 @@ class TopicDetailController extends Controller
     {
         $topics = Topic::where('is_active', 1)->get();
         $countries = Country::get();
-        return view('topic.detail.edit', compact('id', 'topicdetail', 'topics', 'countries'));
+        return view('admin.topic.detail.edit', compact('id', 'topicdetail', 'topics', 'countries'));
     }
     /**
      * Update the specified resource in storage.
@@ -103,11 +97,9 @@ class TopicDetailController extends Controller
             'meta_description' => $request->meta_description
 
         ]);
-
         return redirect()->route('topic.topicdetails.index', $topicdetail->topic_id)
             ->with('success', 'Topic Detail Updated successfully.');
     }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -117,6 +109,4 @@ class TopicDetailController extends Controller
         return redirect()->route('topic.topicdetails.index', $topicdetail->topic_id)
             ->with('danger', 'Topic Detail deleted successfully');
     }
-
-
-    }
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Carbon\Carbon;
 use App\Models\User;
@@ -15,6 +15,7 @@ use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Yajra\DataTables\Facades\Datatables;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -44,14 +45,14 @@ class UserController extends Controller
             return Datatables::eloquent($query)->make(true);
         }
         $roles = Role::all(); // Retrieve all roles from the database
-        return view('user.index', compact('roles'));
+        return view('admin.user.index', compact('roles'));
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('user.create');
+        return view('admin.user.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -82,7 +83,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-        return view('user.edit', compact('user', 'roles'));
+        return view('admin.user.edit', compact('user', 'roles'));
     }
     /**
      * Update the specified resource in storage.
@@ -112,7 +113,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('danger', 'User deleted successfully');
     }
     public function Reset(Request $request)
