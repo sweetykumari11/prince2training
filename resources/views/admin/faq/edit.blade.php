@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('admin.layouts.app')
 @section('content')
     <div class="container-fluid">
         <!-- Content Header (Page header) -->
@@ -25,12 +24,11 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                <div class="col-md-6">
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Edit FaQ</h3>
@@ -56,8 +54,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
-
                                 <div class="form-group">
                                     <label>Answer<span class="text-danger">*</span></label>
                                     <textarea id="summernote" class="summernote @error('answer') is-invalid @enderror" name="answer">{{ old('answer', $faq->answer) }}</textarea>
@@ -65,9 +61,6 @@
                                         <div class="error invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-
-
-
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" name="is_active"
@@ -75,11 +68,9 @@
                                         <label class="custom-control-label" for="customSwitch1">Active</label>
                                     </div>
                                 </div>
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
-                                </form>
                                 </form>
                             </div>
                         </div>
@@ -95,9 +86,8 @@
                                     <!-- timeline time label -->
                                     @foreach ($faq->logActivities as $activity)
                                         <div class="time-label">
-                                            <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A')  }}</span>
+                                            <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
                                         </div>
-
                                         <div>
                                             <i class="fas fa-solid fa-pen bg-blue"></i>
                                             <div class="timeline-item">
@@ -108,7 +98,6 @@
                                             </div>
                                         </div>
                                     @endforeach
-
                                     <div>
                                         <i class="fas fa-clock bg-gray"></i>
                                     </div>
@@ -116,13 +105,10 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
         </section>
     </div>
 @endsection
-
-
 @push('child-scripts')
     <script>
         $(document).ready(function() {
@@ -137,7 +123,6 @@
                 height: 300,
                 focus: true
             });
-
             function removeErrorMessages(inputField) {
                 var parent = inputField.closest('.form-group');
                 var errorElement = parent.find('.error');

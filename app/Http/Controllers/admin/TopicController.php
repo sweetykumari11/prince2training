@@ -83,7 +83,7 @@ class TopicController extends Controller
         // Mail::to('arshdeep.singh@theknowledgeacademy.com')->later(now()->addSeconds(1), $message);
 
         session()->flash('success', 'Topic Created successfully.');
-        return redirect()->route('admin.topic.index');
+        return redirect()->route('topic.index');
     }
 
     public function show(string $id)
@@ -129,7 +129,7 @@ class TopicController extends Controller
 
         session()->flash('success', 'Topic updated successfully.');
 
-        return redirect()->route('admin.topic.index');
+        return redirect()->route('topic.index');
     }
 
     /**
@@ -139,7 +139,7 @@ class TopicController extends Controller
     {
         $topic->delete();
         session()->flash('danger', 'Topic Deleted successfully.');
-        return redirect()->route('admin.topic.index');
+        return redirect()->route('topic.index');
     }
     // public function updateStatus(Request $request)
     // {
@@ -178,7 +178,7 @@ class TopicController extends Controller
         $topic = Topic::withTrashed()->findOrFail($id);
         $topic->restore();
         session()->flash('success', 'Topic Restored successfully.');
-        return redirect()->route('admin.topic.index');
+        return redirect()->route('topic.index');
     }
     public function delete($id)
     {

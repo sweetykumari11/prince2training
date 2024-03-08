@@ -1,9 +1,6 @@
-@extends('layouts.app')
-
+@extends('admin.layouts.app')
 @section('content')
-    {{-- <div id="success-message" class="alert alert-success" style="display: none;"></div> --}}
     <div class="container-fluid">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -25,7 +22,6 @@
                                 <li class="breadcrumb-item"><a href="{{ route('course.faqs.index', $id) }}">FAQ's</a></li>
                                 <input type="hidden" value="{{ $segment }}" class="segment">
                             @endif
-
                         </ol>
                     </div>
                 </div>
@@ -47,9 +43,7 @@
                                             href="{{ route('course.faqs.create', $id) }}"> Create New FaQ</a></div>
                                 @endif
                             </div>
-                            <!-- /.card-header -->
                             <div class="card-body">
-
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="table">
                                         <thead>
@@ -63,7 +57,6 @@
                                         </thead>
                                     </table>
                                 </div>
-
                                 @push('child-scripts')
                                     <script>
                                         $(function() {
@@ -79,7 +72,6 @@
                                                         data: 'question',
                                                         name: 'question'
                                                     },
-
                                                     {
                                                         data: 'is_active',
                                                         name: 'is_active',

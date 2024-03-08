@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Topic;
 use App\Models\Course;
@@ -39,7 +39,7 @@ class CourseController extends Controller
 
             return Datatables::eloquent($query)->make(true);
         }
-        return view('course.list');
+        return view('admin.course.list');
     }
 
     /**
@@ -50,7 +50,7 @@ class CourseController extends Controller
         $topics = Topic::whereHas('category', function ($query) {
             $query->where('is_active', 1);
         })->get();
-        return view('course.create', compact('topics'));
+        return view('admin.course.create', compact('topics'));
     }
 
     /**
@@ -107,7 +107,7 @@ class CourseController extends Controller
         $topics = Topic::whereHas('category', function ($query) {
             $query->where('is_active', 1);
         })->get();
-        return view('course.edit', compact('course', 'topics'));
+        return view('admin.course.edit', compact('course', 'topics'));
     }
     /**
      * Update the specified resource in storage.

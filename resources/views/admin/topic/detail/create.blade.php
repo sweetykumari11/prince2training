@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('admin.layouts.app')
 @section('content')
     <div class="container-fluid">
         <!-- Content Header (Page header) -->
@@ -190,8 +189,6 @@
         </section>
     </div>
 @endsection
-
-
 @push('child-scripts')
     <script>
         $(document).ready(function() {

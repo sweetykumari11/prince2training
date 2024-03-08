@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('admin.layouts.app')
 @section('content')
     <div class="container-fluid">
         <!-- Content Header (Page header) -->
@@ -42,7 +41,6 @@
                                     @else
                                         <form method="POST" action="{{ route('course.faqs.store', $id) }}">
                                 @endif
-
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Question<span class="text-danger">*</label>
@@ -55,7 +53,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label>Answer<span class="text-danger">*</span></label>
                                     <textarea id="summernote" class="summernote @error('answer') is-invalid @enderror" name="answer">{{ old('summary') }}</textarea>
@@ -65,7 +62,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" name="is_active"
@@ -73,7 +69,6 @@
                                         <label class="custom-control-label" for="customSwitch1">Active</label>
                                     </div>
                                 </div>
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
@@ -105,10 +100,12 @@
             $('#summernote').on('summernote.change', function(we, contents, $editable) {
                 resetSummernoteBorder();
             });
+
             function resetSummernoteBorder() {
                 $('#summernote').removeClass('is-invalid');
                 $('#summernote').next('.note-editor').css('border-color', '');
             }
+
             function removeErrorMessages(inputField) {
                 var parent = inputField.closest('.form-group');
                 var errorElement = parent.find('.error');
