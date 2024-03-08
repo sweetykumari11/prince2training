@@ -19,7 +19,7 @@ class FaqController extends Controller
     public function index(Request $request, $id)
     {
         $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        $segment = $uriSegments[1];
+        $segment = $uriSegments[2];
         if ($request->ajax()) {
             $query = Faq::with('creator');
             if ($segment === 'topic') {
@@ -40,7 +40,7 @@ class FaqController extends Controller
     public function create($id)
     {
         $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        $segment = $uriSegments[1];
+        $segment = $uriSegments[2];
         return view('admin.faq.create', compact('id', 'segment'));
     }
 
