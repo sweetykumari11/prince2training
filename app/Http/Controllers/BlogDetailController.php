@@ -16,14 +16,16 @@ class BlogDetailController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request, $id)
-    {
+    { 
         if ($request->ajax()) {
-            $query = BlogDetail::with('creator', 'blog');
-            // $query->whereHas('blog', function ($query) {
-            //     $query->where('country_id', session('country')->id);
-            // });
-            $query->where('blog_id', $id);
-            return Datatables::eloquent($query)->make(true);
+            $query = BlogDetail::with('blog');
+            $query->where('blog_id', $id)->get();
+            return Datatables::of($query)
+            ->addIndexColumn()
+            ->addColumn('creator_name', function($row){ 
+                return $row->creator ? $row->creator->name : '';      
+            })
+            ->make(true);
         }
         return view('blog.details.list', compact('id'));
     }

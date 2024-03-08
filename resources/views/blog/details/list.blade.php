@@ -93,8 +93,8 @@
                                                         }
                                                     },
                                                     {
-                                                        data: 'creator.name',
-                                                        name: 'creator.name'
+                                                        data: 'creator_name',
+                                                        name: 'creator_name'
                                                     },
                                                     {
                                                         data: 'id',

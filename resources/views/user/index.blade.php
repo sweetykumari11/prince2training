@@ -111,7 +111,7 @@
                                                         orderable: false,
                                                         searchable: false,
                                                         render: function(data, type, full, meta) {
-                                                            return '<a href="/password/reset/' + full.id +
+                                                            return '<a href="/admin/password/reset/' + full.id +
                                                                 '" id="password-reset-link-' + full.id +
                                                                 '" class="btn btn-primary btn-sm">Reset</a>';
                                                         }

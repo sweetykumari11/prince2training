@@ -32,14 +32,14 @@ class AuthController extends Controller
             Auth::logoutOtherDevices($request->input('password'));
             return redirect()->route('dashboard.index')->withSuccess('Signed in successfully');
         } else {
-            return redirect("login")->with('error', 'Login details are not valid');
+            return redirect("admin/login")->with('error', 'Login details are not valid');
         }
     }
     public function logout()
     {
         //Session::flush();
         Auth::logout();
-        return Redirect('login');
+        return Redirect('admin/login');
     }
 
 }
