@@ -22,8 +22,8 @@ class UpdateCountryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'country_code' => 'required|string',
+            'name' => "required|string|unique:countries,name,{$this->id},id,deleted_at,NULL",
+            'country_code' => "required|unique:countries,country_code,{$this->id},id,deleted_at,NULL",
             'description' => 'required|string',
             'iso3' => 'required|string',
             'currency' => 'required|string',

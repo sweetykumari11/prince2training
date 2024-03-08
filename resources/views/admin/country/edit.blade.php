@@ -31,6 +31,7 @@
                             <form method="POST" action="{{ route('countries.update', $country->id) }}"
                                 enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                <input type="hidden" name="id" value="{{ $country->id}}" />
                                 @method('PUT')
                                 <div class="form-group">
                                     <label>Name</label>

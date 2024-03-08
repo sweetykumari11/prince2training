@@ -30,7 +30,7 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('countries.store') }}" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
+                                <input type="hidden" name="id" value="" />
                                 <div class="form-group">
                                     <label>Name<span class="text-danger">*</span></label>
                                     <input id="country_name" type="text"
