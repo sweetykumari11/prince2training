@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container-fluid">
         <section class="content-header">
@@ -39,7 +38,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Slug<span class="text-danger">*</label>
                                         <input type="text" class="form-control @error('slug') is-invalid @enderror"
@@ -51,7 +49,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <label for="exampleInputFile">Icon<span class="text-danger">*</label>
                                         <div class="input-group">
@@ -67,7 +64,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <label for="exampleInputFile">Logo<span class="text-danger">*</label>
                                         <div class="input-group">
@@ -89,7 +85,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" name="is_active"
@@ -97,7 +92,6 @@
                                             <label class="custom-control-label" for="customSwitch1">Active</label>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" name="is_popular"
@@ -105,7 +99,6 @@
                                             <label class="custom-control-label" for="customSwitch2">Popular</label>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" name="is_technical"
@@ -113,7 +106,6 @@
                                             <label class="custom-control-label" for="customSwitch3">Technical</label>
                                         </div>
                                     </div>
-
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Create</button>
                                     </div>
@@ -126,16 +118,12 @@
         </section>
     </div>
 @endsection
-
-
 @push('child-scripts')
     <script>
         $(document).ready(function() {
-
             $('#name,#slug,#icon,#logo').on('input', function() {
                 removeErrorMessages($(this));
             });
-
             var nameField = $('#name');
             var slugField = $('#slug');
 
@@ -145,7 +133,6 @@
                 errorElement.remove();
                 inputField.removeClass('is-invalid');
             }
-
             nameField.on('input', function() {
                 var category_name = nameField.val();
                 var str = category_name;
@@ -154,7 +141,6 @@
                 slugField.val(str);
                 removeErrorMessages(slugField);
             });
-
             slugField.on('input', function() {
                 removeErrorMessages(slugField);
             });
@@ -162,11 +148,9 @@
                 height: 300,
                 focus: true,
             });
-
             if ($('#summernote').hasClass('is-invalid')) {
                 $('#summernote').next('.note-editor').css('border-color', 'red');
             }
-
             $('#summernote').on('summernote.change', function(we, contents, $editable) {
                 resetSummernoteBorder();
             });
@@ -175,7 +159,6 @@
                 $('#summernote').removeClass('is-invalid');
                 $('#summernote').next('.note-editor').css('border-color', '');
             }
-
         });
     </script>
 @endpush

@@ -14,9 +14,7 @@
                 </div>
             </div>
         </div>
-
     </section>
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -40,7 +38,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="name">Slug<span class="text-danger">*</label>
                                     <input type="text" class="form-control @error('slug') is-invalid @enderror"
@@ -51,7 +48,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="icon">Icon<span class="text-danger">*</label>
                                     <div class="input-group">
@@ -77,7 +73,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="icon">Logo<span class="text-danger">*</label>
                                     <div class="input-group">
@@ -112,9 +107,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
-
-
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" name="is_active"
@@ -122,7 +114,6 @@
                                         <label class="custom-control-label" for="customSwitch1">Active</label>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" name="is_popular"
@@ -130,7 +121,6 @@
                                         <label class="custom-control-label" for="customSwitch2">Popular</label>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" name="is_technical"
@@ -138,7 +128,6 @@
                                         <label class="custom-control-label" for="customSwitch3">Technical</label>
                                     </div>
                                 </div>
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
@@ -147,80 +136,71 @@
                         </div>
                     </div>
                 </div>
-
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Activity</h3>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Activity</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline">
+                                @foreach ($category->logActivities as $activity)
+                                    <div class="time-label">
+                                        <span class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
                                     </div>
-                                    <div class="card-body">
-
-                                        <div class="timeline">
-
-                                            @foreach ($category->logActivities as $activity)
-                                                <div class="time-label">
-                                                    <span
-                                                        class="bg-red">{{ $activity->created_at->format('d-M-Y h:i A') }}</span>
-                                                </div>
-
-                                                <div>
-                                                    <i class="fas fa-solid fa-pen bg-blue"></i>
-                                                    <div class="timeline-item">
-                                                        <div class="card-header">
-                                                            <h3 class="card-title">{{ $activity->creator->name ?? '' }}</h3>
-                                                        </div>
-                                                        <h3 class="timeline-header no-border"> {{ $activity->activity }}
-                                                            </a></h3>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                            <div>
-                                                <i class="fas fa-clock bg-gray"></i>
+                                    <div>
+                                        <i class="fas fa-solid fa-pen bg-blue"></i>
+                                        <div class="timeline-item">
+                                            <div class="card-header">
+                                                <h3 class="card-title">{{ $activity->creator->name ?? '' }}</h3>
                                             </div>
+                                            <h3 class="timeline-header no-border"> {{ $activity->activity }}
+                                                </a>
+                                            </h3>
                                         </div>
                                     </div>
+                                @endforeach
+                                <div>
+                                    <i class="fas fa-clock bg-gray"></i>
                                 </div>
                             </div>
                         </div>
-                </section>
+                    </div>
+                </div>
             </div>
-        @endsection
-
-        @push('child-scripts')
-            <script>
-                $(document).ready(function() {
-                    var t = $('#summernote').summernote({
-                        height: 300,
-                        focus: true
-                    });
-                });
-
-                function removeIcon() {
-                    $('#removeicontxt').val('removed');
-                    $('#cIcon').attr('src', '{{ asset('Images/icon/no-image.png') }}');
-                    $('#removeicon').hide();
-                    $('#undoremoceicon').show();
-                }
-
-                function undoIcon() {
-                    $('#removeicontxt').val(null);
-                    $('#cIcon').attr('src', '{{ asset($category->icon) }}');
-                    $('#removeicon').show();
-                    $('#undoremoceicon').hide();
-                }
-
-                function removeLogo() {
-                    $('#removelogotxt').val('removed');
-                    $('#cLogo').attr('src', '{{ asset('Images/icon/no-image.png') }}');
-                    $('#removelogo').hide();
-                    $('#undoremocelogo').show();
-                }
-
-                function undoLogo() {
-                    $('#removelogotxt').val(null);
-                    $('#cLogo').attr('src', '{{ asset($category->logo) }}');
-                    $('#removelogo').show();
-                    $('#undoremocelogo').hide();
-                }
-            </script>
-        @endpush
+    </section>
+    </div>
+@endsection
+@push('child-scripts')
+    <script>
+        $(document).ready(function() {
+            var t = $('#summernote').summernote({
+                height: 300,
+                focus: true
+            });
+        });
+        function removeIcon() {
+            $('#removeicontxt').val('removed');
+            $('#cIcon').attr('src', '{{ asset('Images/icon/no-image.png') }}');
+            $('#removeicon').hide();
+            $('#undoremoceicon').show();
+        }
+        function undoIcon() {
+            $('#removeicontxt').val(null);
+            $('#cIcon').attr('src', '{{ asset($category->icon) }}');
+            $('#removeicon').show();
+            $('#undoremoceicon').hide();
+        }
+        function removeLogo() {
+            $('#removelogotxt').val('removed');
+            $('#cLogo').attr('src', '{{ asset('Images/icon/no-image.png') }}');
+            $('#removelogo').hide();
+            $('#undoremocelogo').show();
+        }
+        function undoLogo() {
+            $('#removelogotxt').val(null);
+            $('#cLogo').attr('src', '{{ asset($category->logo) }}');
+            $('#removelogo').show();
+            $('#undoremocelogo').hide();
+        }
+    </script>
+@endpush

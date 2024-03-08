@@ -43,7 +43,6 @@
                                                     <th scope="col">Created At</th>
                                                     <th scope="col">Created By</th>
                                                     <th scope="col">Action</th>
-
                                                 </tr>
                                             </thead>
                                         </table>
@@ -150,7 +149,6 @@
                                                 //         }
                                                 //     }
                                                 // },
-
                                                 {
                                                     data: 'created_at',
                                                     name: 'created_at',
@@ -217,7 +215,6 @@
                     columns: columnStructure
                 });
             }
-
             $('#customSwitch1').on('change', function() {
                 var isChecked = $(this).prop('checked');
                 $('#table').DataTable().destroy();
@@ -227,9 +224,7 @@
                     loadAllData();
                 }
             });
-
             loadAllData();
-
             // $('#table').on('click', '.is_active', function() {
             //     var activestatus = $(this).data('activestatus');
             //     var dataVal = $(this).data('val');
