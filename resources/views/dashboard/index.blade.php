@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
-
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">

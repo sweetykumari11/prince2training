@@ -49,7 +49,6 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" name="is_active"
@@ -60,7 +59,7 @@
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
-
+                                </form>
                             </div>
                         </div>
                     </div>

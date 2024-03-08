@@ -29,7 +29,6 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('role.store') }}">
                                 @csrf
-
                                 <div class="form-group">
                                     <label for="name">Name<span class="text-danger">*</span></label>
                                     <input type="text" name="name" id="name"
@@ -41,7 +40,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="description">Description<span class="text-danger">*</span></label>
                                     <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
@@ -60,6 +58,7 @@
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
+                            </form>
                         </div>
                     </div>
                 </div>

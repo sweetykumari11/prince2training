@@ -29,8 +29,8 @@
                                 <h3 class="card-title">Edit Permission</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('permission.update', $permission->id) }}">
+                            <form method="POST" action="{{ route('permission.update', $permission->id) }}">
+                                <div class="card-body">
                                     @csrf
                                     @method('PUT') <!-- Use the PUT method for updating -->
                                     <div class="form-group">
@@ -92,10 +92,10 @@
                                             <label class="custom-control-label" for="customSwitch1">Active</label>
                                         </div>
                                     </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Edit</button>
-                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </div>
                             </form>
                         </div>
                     </div>
