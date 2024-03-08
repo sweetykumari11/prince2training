@@ -1,26 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FaqController;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\TopicController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\RegionController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LocationsController;
-use App\Http\Controllers\BlogDetailController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\LogActivityController;
-use App\Http\Controllers\PageContentController;
-use App\Http\Controllers\TopicDetailController;
-use App\Http\Controllers\CoursedetailController;
+use App\Http\Controllers\admin\FaqController;
+use App\Http\Controllers\admin\TagController;
+use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\BlogController;
+use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\RoleController;
+use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\TopicController;
+use App\Http\Controllers\admin\CourseController;
+use App\Http\Controllers\admin\ModuleController;
+use App\Http\Controllers\admin\RegionController;
+use App\Http\Controllers\admin\CountryController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\LocationsController;
+use App\Http\Controllers\admin\BlogDetailController;
+use App\Http\Controllers\admin\PermissionController;
+use App\Http\Controllers\admin\LogActivityController;
+use App\Http\Controllers\admin\PageContentController;
+use App\Http\Controllers\admin\TopicDetailController;
+use App\Http\Controllers\admin\CoursedetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
