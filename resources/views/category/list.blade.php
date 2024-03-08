@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container-fluid">
         <!-- Content Header (Page header) -->
@@ -27,15 +26,6 @@
                                 <div class="float-right">
                                     <a class="btn btn-block btn-sm btn-success mb-2"
                                         href="{{ route('category.create') }}">Create New Record</a>
-                                    {{-- <div class="d-flex flex-column align-items-center">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                            <label class="custom-control-label" for="customSwitch1"></label>
-                                        </div>
-                                        <div class="text-center mt-1">Active</div>
-                                    </div>
-                                </div> --}}
-
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -47,7 +37,6 @@
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Icon</th>
                                                     <th scope="col">Logo</th>
-                                                    {{-- <th scope="col">Content</th> --}}
                                                     <th scope="col">Active</th>
                                                     <th scope="col">Popular</th>
                                                     <th scope="col">Technical</th>
@@ -59,7 +48,6 @@
                                             </thead>
                                         </table>
                                     </div>
-
                                     @push('child-scripts')
                                         <script>
                                             var columnStructure = [{
@@ -91,10 +79,6 @@
                                                         }
                                                     }
                                                 },
-                                                // {
-                                                //     data: 'content',
-                                                //     name: 'content',
-                                                // },
                                                 {
                                                     data: 'is_active',
                                                     name: 'is_active',
@@ -121,7 +105,6 @@
                                                         }
                                                     }
                                                 },
-
                                                 {
                                                     data: 'is_technical',
                                                     name: 'is_technical',
@@ -135,8 +118,6 @@
                                                         }
                                                     }
                                                 },
-
-
                                                 // {
                                                 //     data: 'country',
                                                 //     name: 'country',
@@ -249,43 +230,42 @@
 
             loadAllData();
 
-            $('#table').on('click', '.is_active', function() {
-                var activestatus = $(this).data('activestatus');
-                var dataVal = $(this).data('val');
-                var $toggle = $(this);
-                var url = '/changecategoryStatus';
-                handleStatusToggle($toggle, activestatus, dataVal, url);
-            });
+            // $('#table').on('click', '.is_active', function() {
+            //     var activestatus = $(this).data('activestatus');
+            //     var dataVal = $(this).data('val');
+            //     var $toggle = $(this);
+            //     var url = '/changecategoryStatus';
+            //     handleStatusToggle($toggle, activestatus, dataVal, url);
+            // });
 
-            $('#table').on('click', '.is_popular', function() {
-                var popularstatus = $(this).data('popularstatus');
-                var dataVal = $(this).data('val');
-                var $toggle = $(this);
-                var url = '/categorysetpopular';
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: url,
-                    data: {
-                        'is_popular': popularstatus,
-                        'id': dataVal
-                    },
-                    success: function(data) {
-                        if (popularstatus === 1) {
-                            $toggle.removeClass('text-secondary').addClass('text-primary');
-                            $toggle.data('popularstatus', 0);
-                            $('#success-message').text(data.success).show();
-                            $('#danger-message').text(data.success).hide();
-                        } else {
-                            $toggle.removeClass('text-primary').addClass('text-secondary');
-                            $toggle.data('popularstatus', 1);
-                            $('#danger-message').text(data.success).show();
-                            $('#success-message').text(data.success).hide();
-                        }
-                    }
-                });
-            });
-
+            // $('#table').on('click', '.is_popular', function() {
+            //     var popularstatus = $(this).data('popularstatus');
+            //     var dataVal = $(this).data('val');
+            //     var $toggle = $(this);
+            //     var url = '/categorysetpopular';
+            //     $.ajax({
+            //         type: "GET",
+            //         dataType: "json",
+            //         url: url,
+            //         data: {
+            //             'is_popular': popularstatus,
+            //             'id': dataVal
+            //         },
+            //         success: function(data) {
+            //             if (popularstatus === 1) {
+            //                 $toggle.removeClass('text-secondary').addClass('text-primary');
+            //                 $toggle.data('popularstatus', 0);
+            //                 $('#success-message').text(data.success).show();
+            //                 $('#danger-message').text(data.success).hide();
+            //             } else {
+            //                 $toggle.removeClass('text-primary').addClass('text-secondary');
+            //                 $toggle.data('popularstatus', 1);
+            //                 $('#danger-message').text(data.success).show();
+            //                 $('#success-message').text(data.success).hide();
+            //             }
+            //         }
+            //     });
+            // });
             $('#table').on('click', '.category-checkbox', function() {
                 var categoryId = $(this).data('category-id');
                 var isChecked = $(this).prop('checked');

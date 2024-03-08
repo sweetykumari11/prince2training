@@ -37,6 +37,7 @@ Route::get('/',             [AuthController::class, 'index'])->name('login');
 Route::prefix('admin')->group(function () {
     Route::get('/login',        [AuthController::class, 'index'])->name('login');
     Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
+    Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
 
     // Password Reset Routes
     Route::get('/password/reset/{id}', [UserController::class, 'Reset'])->name('password.reset');
@@ -64,20 +65,20 @@ Route::prefix('admin')->group(function () {
         Route::resource('topic.topicdetails',       TopicDetailController::class);
         Route::resource('course.coursedetails',     CoursedetailController::class);
         Route::resource('course.faqs',              FaqController::class);
-
-
-        Route::get('changeblogStatus',        [BlogController::class, 'blogStatus']);
-        Route::get('changecountryStatus',        [CountryController::class, 'countryStatus']);
-        Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
-        Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
-        Route::get('changecategoryStatus',    [CategoryController::class, 'categoryStatus']);
         Route::post('rolesupdate',       [UserController::class, 'rolesupdate'])->name('user.rolesupdate');
         Route::get('actvities', [LogActivityController::class, 'index'])->name('actvities.index');
 
-        Route::get('changefaqStatus',         [FaqController::class, 'faqStatus']);
-        Route::get('changetopicStatus',       [TopicController::class, 'updateStatus']);
-        Route::get('country-topics',        [TopicController::class, 'storeTopicCountry']);
-        Route::get('topicsetpopular',       [TopicController::class, 'setPopular']);
 
+        // Route::get('changeblogStatus',        [BlogController::class, 'blogStatus']);
+        // Route::get('changecountryStatus',        [CountryController::class, 'countryStatus']);
+       // Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
+
+        // Route::get('changecategoryStatus',    [CategoryController::class, 'categoryStatus']);
+
+
+        // Route::get('changefaqStatus',         [FaqController::class, 'faqStatus']);
+        // Route::get('changetopicStatus',       [TopicController::class, 'updateStatus']);
+        // Route::get('country-topics',        [TopicController::class, 'storeTopicCountry']);
+        // Route::get('topicsetpopular',       [TopicController::class, 'setPopular']);
     });
 });

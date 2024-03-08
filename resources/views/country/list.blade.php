@@ -124,7 +124,7 @@
         </section>
     </div>
 @endsection
-@push('child-scripts')
+{{-- @push('child-scripts')
     <script>
         $(document).ready(function() {
             $('#table').on('click', '.is_active', function() {
@@ -139,4 +139,4 @@
 
         });
     </script>
-@endpush
+@endpush --}}

@@ -42,8 +42,8 @@ class BlogController extends Controller
             //->where('country_id', session('country')->id);
             return Datatables::of($query)
             ->addIndexColumn()
-            ->addColumn('category_name', function($row){ 
-                return $row->category ? $row->category->name : '';      
+            ->addColumn('category_name', function($row){
+                return $row->category ? $row->category->name : '';
             })
             ->make(true);
         }
@@ -224,41 +224,41 @@ class BlogController extends Controller
         $blog->delete();
         return redirect()->route('blogs.index')->with('danger', 'Blog Deleted Successfully');
     }
-    public function blogStatus(Request $request)
-    {
-        $blog = Blog::find($request->id);
-        $blog->is_active = $request->is_active;
-        $blog->save();
-        if ($request->is_active == 1) {
-            return response()->json(['success' => 'Blog Activated']);
-        } else {
-            return response()->json(['success' => 'Blog Deactivated']);
-        }
-    }
-    public function storeblogcountry(Request $request)
-    {
-        $blog = Blog::find($request->id);
-        if ($request->checked == 'true') {
-            $blog->countries()->sync([session('country')->id => ['deleted_at' => null]]);
-        } else {
-            $blog->countries()->updateExistingPivot(session('country')->id, [
-                'deleted_at' => now(),
-            ]);
-        }
-    }
-    public function setPopular(Request $request){
+    // public function blogStatus(Request $request)
+    // {
+    //     $blog = Blog::find($request->id);
+    //     $blog->is_active = $request->is_active;
+    //     $blog->save();
+    //     if ($request->is_active == 1) {
+    //         return response()->json(['success' => 'Blog Activated']);
+    //     } else {
+    //         return response()->json(['success' => 'Blog Deactivated']);
+    //     }
+    // }
+    // public function storeblogcountry(Request $request)
+    // {
+    //     $blog = Blog::find($request->id);
+    //     if ($request->checked == 'true') {
+    //         $blog->countries()->sync([session('country')->id => ['deleted_at' => null]]);
+    //     } else {
+    //         $blog->countries()->updateExistingPivot(session('country')->id, [
+    //             'deleted_at' => now(),
+    //         ]);
+    //     }
+    // }
+    // public function setPopular(Request $request){
 
-        $blog = Blog::find($request->id);
-        $blog->countries()->updateExistingPivot(session('country')->id, [
-            'is_popular' =>  $request->is_popular,
-        ]);
-        if ($request->is_popular == 1) {
-            return response()->json(['success' => 'Blog Popular Activated']);
-        } else {
-            return response()->json(['success' => 'Blog Popular Deactivated']);
-        }
+    //     $blog = Blog::find($request->id);
+    //     $blog->countries()->updateExistingPivot(session('country')->id, [
+    //         'is_popular' =>  $request->is_popular,
+    //     ]);
+    //     if ($request->is_popular == 1) {
+    //         return response()->json(['success' => 'Blog Popular Activated']);
+    //     } else {
+    //         return response()->json(['success' => 'Blog Popular Deactivated']);
+    //     }
 
-    }
+    // }
     public function trashedBlog(Request $request)
     {
         if ($request->ajax()) {
