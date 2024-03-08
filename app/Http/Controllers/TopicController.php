@@ -141,29 +141,29 @@ class TopicController extends Controller
         session()->flash('danger', 'Topic Deleted successfully.');
         return redirect()->route('topic.index');
     }
-    public function updateStatus(Request $request)
-    {
-        $topic = Topic::find($request->id);
-        $topic->is_active = $request->is_active;
-        $topic->save();
-        if ($request->is_active == 1) {
-            return response()->json(['success' => 'Topic Activated']);
-        } else {
-            return response()->json(['success' => 'Topic Deactivated']);
-        }
-    }
+    // public function updateStatus(Request $request)
+    // {
+    //     $topic = Topic::find($request->id);
+    //     $topic->is_active = $request->is_active;
+    //     $topic->save();
+    //     if ($request->is_active == 1) {
+    //         return response()->json(['success' => 'Topic Activated']);
+    //     } else {
+    //         return response()->json(['success' => 'Topic Deactivated']);
+    //     }
+    // }
 
-    public function storeTopicCountry(Request $request)
-    {
-        $topic = Topic::find($request->topic_id);
-        if ($request->checked == 'true') {
-            $topic->countries()->sync([session('country')->id => ['deleted_at' => null]]);
-        } else {
-            $topic->countries()->updateExistingPivot(session('country')->id, [
-                'deleted_at' => now(),
-            ]);
-        }
-    }
+    // public function storeTopicCountry(Request $request)
+    // {
+    //     $topic = Topic::find($request->topic_id);
+    //     if ($request->checked == 'true') {
+    //         $topic->countries()->sync([session('country')->id => ['deleted_at' => null]]);
+    //     } else {
+    //         $topic->countries()->updateExistingPivot(session('country')->id, [
+    //             'deleted_at' => now(),
+    //         ]);
+    //     }
+    // }
 
     public function trashedTopic(Request $request)
     {
@@ -187,16 +187,16 @@ class TopicController extends Controller
         session()->flash('danger', 'Topic Deleted successfully.');
         return view('trash.topic_list');
     }
-    public function setPopular(Request $request)
-    {
-        $topic = Topic::find($request->id);
-        $topic->countries()->updateExistingPivot(session('country')->id, [
-            'is_popular' =>  $request->is_popular,
-        ]);
-        if ($request->is_popular == 1) {
-            return response()->json(['success' => 'Topic Popular Activated']);
-        } else {
-            return response()->json(['success' => 'Topic Popular Deactivated']);
-        }
-    }
+    // public function setPopular(Request $request)
+    // {
+    //     $topic = Topic::find($request->id);
+    //     $topic->countries()->updateExistingPivot(session('country')->id, [
+    //         'is_popular' =>  $request->is_popular,
+    //     ]);
+    //     if ($request->is_popular == 1) {
+    //         return response()->json(['success' => 'Topic Popular Activated']);
+    //     } else {
+    //         return response()->json(['success' => 'Topic Popular Deactivated']);
+    //     }
+    // }
 }

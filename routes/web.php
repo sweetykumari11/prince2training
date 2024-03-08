@@ -71,11 +71,8 @@ Route::prefix('admin')->group(function () {
 
         // Route::get('changeblogStatus',        [BlogController::class, 'blogStatus']);
         // Route::get('changecountryStatus',        [CountryController::class, 'countryStatus']);
-       // Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
-
+        // Route::get('blogsetpopular', [BlogController::class, 'setPopular']);
         // Route::get('changecategoryStatus',    [CategoryController::class, 'categoryStatus']);
-
-
         // Route::get('changefaqStatus',         [FaqController::class, 'faqStatus']);
         // Route::get('changetopicStatus',       [TopicController::class, 'updateStatus']);
         // Route::get('country-topics',        [TopicController::class, 'storeTopicCountry']);
