@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Topic;
 use App\Models\Category;
@@ -40,7 +40,7 @@ class TopicController extends Controller
             ]);
             return Datatables::eloquent($query)->make(true);
         }
-        return view('topic.list');
+        return view('admin.topic.list');
     }
 
     /**
@@ -49,7 +49,7 @@ class TopicController extends Controller
     public function create()
     {
         $categories = Category::where('is_active', 1)->get();
-        return view('topic.create', ['categories' => $categories]);
+        return view('admin.topic.create', ['categories' => $categories]);
     }
 
     /**
@@ -83,7 +83,7 @@ class TopicController extends Controller
         // Mail::to('arshdeep.singh@theknowledgeacademy.com')->later(now()->addSeconds(1), $message);
 
         session()->flash('success', 'Topic Created successfully.');
-        return redirect()->route('topic.index');
+        return redirect()->route('admin.topic.index');
     }
 
     public function show(string $id)
@@ -94,7 +94,7 @@ class TopicController extends Controller
     {
         $categories = Category::where('is_active', 1)->get();
         $slug = $topic->slugs()->first();
-        return view('topic.edit', compact('topic', 'categories', 'slug'));
+        return view('admin.topic.edit', compact('topic', 'categories', 'slug'));
     }
     public function update(TopicUpdateRequest $request, Topic $topic): RedirectResponse
     {
@@ -129,7 +129,7 @@ class TopicController extends Controller
 
         session()->flash('success', 'Topic updated successfully.');
 
-        return redirect()->route('topic.index');
+        return redirect()->route('admin.topic.index');
     }
 
     /**
@@ -139,7 +139,7 @@ class TopicController extends Controller
     {
         $topic->delete();
         session()->flash('danger', 'Topic Deleted successfully.');
-        return redirect()->route('topic.index');
+        return redirect()->route('admin.topic.index');
     }
     // public function updateStatus(Request $request)
     // {
@@ -171,21 +171,21 @@ class TopicController extends Controller
             $trashedTopics = Topic::onlyTrashed();
             return Datatables::eloquent($trashedTopics)->make(true);
         }
-        return view('trash.topic_list');
+        return view('admin.trash.topic_list');
     }
     public function restore(Request $request, $id)
     {
         $topic = Topic::withTrashed()->findOrFail($id);
         $topic->restore();
         session()->flash('success', 'Topic Restored successfully.');
-        return redirect()->route('topic.index');
+        return redirect()->route('admin.topic.index');
     }
     public function delete($id)
     {
         $topic = Topic::withTrashed()->findOrFail($id);
         $topic->forceDelete();
         session()->flash('danger', 'Topic Deleted successfully.');
-        return view('trash.topic_list');
+        return view('admin.trash.topic_list');
     }
     // public function setPopular(Request $request)
     // {
